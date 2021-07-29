@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "smart-student-d3812": {
+      "hosting": {
+        "lbd-free-angular-cli": [
+          "smart-student-d3812"
+        ]
+      }
+    }
+  }
+}
