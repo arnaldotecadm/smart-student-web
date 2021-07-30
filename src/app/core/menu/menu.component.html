@@ -1,0 +1,99 @@
+<div>
+  <div class="header" *ngIf="currentUser$ | async as currentUser">
+    <div class="center">
+      <img
+        mat-card-image
+        [src]="currentUser.photoURL"
+        alt="account"
+        height="150"
+        style="border-radius: 15px"
+      />
+    </div>
+    <div style="color: white">
+      <div>{{ currentUser.displayName }}</div>
+      <div>{{ currentUser.email }}</div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="menu">
+      <div
+        class="row"
+        [ngClass]="selectedItem == 'home' ? 'menu-selected' : ''"
+        [routerLink]="'/home'"
+        (click)="selectedItem = 'home'"
+      >
+        <div class="menu-icon">
+          <mat-icon aria-hidden="false">home</mat-icon>
+        </div>
+        <div>Home</div>
+      </div>
+      <div
+        class="row"
+        [ngClass]="selectedItem == 'dashboard' ? 'menu-selected' : ''"
+        [routerLink]="'/dashboard'"
+        (click)="selectedItem = 'dashboard'"
+      >
+        <div class="menu-icon">
+          <mat-icon aria-hidden="false">dashboard</mat-icon>
+        </div>
+        <div>Dashboard</div>
+      </div>
+
+      <div class="row">
+        <div class="menu-icon">
+          <mat-icon aria-hidden="false">people</mat-icon>
+        </div>
+        <div>Alunos</div>
+      </div>
+
+      <div class="row">
+        <div class="menu-icon">
+          <mat-icon aria-hidden="false">people</mat-icon>
+        </div>
+        <div>Professores</div>
+      </div>
+
+      <div class="row">
+        <div class="menu-icon">
+          <mat-icon aria-hidden="false">subject</mat-icon>
+        </div>
+        <div>Materias</div>
+      </div>
+
+      <div class="row">
+        <div class="menu-icon">
+          <mat-icon aria-hidden="false">grade</mat-icon>
+        </div>
+        <div>Notas</div>
+      </div>
+
+      <div class="row">
+        <div class="menu-icon">
+          <mat-icon aria-hidden="false">local_activity</mat-icon>
+        </div>
+        <div>Atividades</div>
+      </div>
+
+      <div
+        class="row"
+        [ngClass]="selectedItem == 'settings' ? 'menu-selected' : ''"
+      >
+        <div class="menu-icon">
+          <mat-icon aria-hidden="false">settings</mat-icon>
+        </div>
+        <div>Settings</div>
+      </div>
+
+      <div class="row" (click)="logout()">
+        <div class="menu-icon">
+          <mat-icon aria-hidden="false">exit_to_app</mat-icon>
+        </div>
+        <div>Logout</div>
+      </div>
+    </div>
+    <div class="footer">
+      <hr />
+      <div class="stats">Arnaldo C. Bezerra®</div>
+    </div>
+  </div>
+</div>
