@@ -1,0 +1,124 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card mt-1 scroll-99">
+          <div class="content h-100">
+            <div class="row h-100">
+              <div class="col-md-2 menu-lateral" style="margin-left: 7px">
+                <div>
+                  <div class="header">
+                    <img
+                      mat-card-image
+                      [src]="'/assets/img/angular2-logo-white.png'"
+                      alt="account"
+                    />
+                  </div>
+                  <div class="content">
+                    <div class="menu">
+                      <div
+                        class="row"
+                        [ngClass]="
+                          selectedItem == 'home' ? 'menu-selected' : ''
+                        "
+                        [routerLink]="'/home'"
+                        (click)="selectedItem = 'home'"
+                      >
+                        <div class="menu-icon">
+                          <mat-icon aria-hidden="false">home</mat-icon>
+                        </div>
+                        <div>Home</div>
+                      </div>
+                      <div
+                        class="row"
+                        [ngClass]="
+                          selectedItem == 'dashboard' ? 'menu-selected' : ''
+                        "
+                        [routerLink]="'/user'"
+                        (click)="selectedItem = 'dashboard'"
+                      >
+                        <div class="menu-icon">
+                          <mat-icon aria-hidden="false">dashboard</mat-icon>
+                        </div>
+                        <div>Dashboard</div>
+                      </div>
+
+                      <div class="row">
+                        <div class="menu-icon">
+                          <mat-icon aria-hidden="false">people</mat-icon>
+                        </div>
+                        <div>Alunos</div>
+                      </div>
+
+                      <div class="row">
+                        <div class="menu-icon">
+                          <mat-icon aria-hidden="false">people</mat-icon>
+                        </div>
+                        <div>Professores</div>
+                      </div>
+
+                      <div class="row">
+                        <div class="menu-icon">
+                          <mat-icon aria-hidden="false">subject</mat-icon>
+                        </div>
+                        <div>Materias</div>
+                      </div>
+
+                      <div class="row">
+                        <div class="menu-icon">
+                          <mat-icon aria-hidden="false">grade</mat-icon>
+                        </div>
+                        <div>Notas</div>
+                      </div>
+
+                      <div class="row">
+                        <div class="menu-icon">
+                          <mat-icon aria-hidden="false"
+                            >local_activity</mat-icon
+                          >
+                        </div>
+                        <div>Atividades</div>
+                      </div>
+
+                      <div
+                        class="row"
+                        [ngClass]="
+                          selectedItem == 'settings' ? 'menu-selected' : ''
+                        "
+                      >
+                        <div class="menu-icon">
+                          <mat-icon aria-hidden="false">settings</mat-icon>
+                        </div>
+                        <div>Settings</div>
+                      </div>
+
+                      <div
+                        class="row"
+                        [ngClass]="
+                          selectedItem == 'logout' ? 'menu-selected' : ''
+                        "
+                      >
+                        <div class="menu-icon">
+                          <mat-icon aria-hidden="false">exit_to_app</mat-icon>
+                        </div>
+                        <div>Logout</div>
+                      </div>
+                    </div>
+                    <div class="footer">
+                      <hr />
+                      <div class="stats">Arnaldo C. Bezerra®</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-10" style="margin-left: -7px">
+                <router-outlet></router-outlet>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
