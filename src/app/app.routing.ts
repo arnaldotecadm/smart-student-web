@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 import { AlunoListComponent } from "./cadastros/aluno/aluno-list/aluno-list.component";
+import { ProfessorListComponent } from "./cadastros/professor/professor-list/professor-list.component";
 import { AuthGuard } from "./core/auth/auth.guard";
 import { SigninComponent } from "./core/signin/signin.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
@@ -17,6 +18,12 @@ const routes: Routes = [
   {
     path: "alunos",
     component: AlunoListComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: "professores",
+    component: ProfessorListComponent,
     canActivate: [AuthGuard],
   },
 
