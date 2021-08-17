@@ -13,6 +13,17 @@ export class MenuComponent implements OnInit {
   currentUser$ = new Subject();
   selectedItem = "home";
 
+  MENU_ITEMS = [
+    { routerLink: "home", icon: "home", label: "Home" },
+    { routerLink: "dashboard", icon: "dashboard", label: "Dashboard" },
+    { routerLink: "alunos", icon: "people", label: "Alunos" },
+    { routerLink: "professores", icon: "people", label: "Professores" },
+    { routerLink: "", icon: "subject", label: "Materias" },
+    { routerLink: "", icon: "grade", label: "Notas" },
+    { routerLink: "", icon: "local_activity", label: "Atividades" },
+    { routerLink: "", icon: "settings", label: "Configurações" },
+  ];
+
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
