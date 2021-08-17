@@ -10,7 +10,7 @@ import { UserService } from "../user/user.service";
 })
 export class MenuComponent implements OnInit {
   currentUser$ = new Subject();
-  selectedItem = "home";
+  selectedItem = "Home";
 
   MENU_ITEMS = [
     { routerLink: "home", icon: "home", label: "Home" },
