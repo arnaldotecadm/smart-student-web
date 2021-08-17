@@ -1,0 +1,10 @@
+.card {
+  margin-bottom: 5px;
+}
+
+.codigo-cliente {
+  padding: 5px;
+  background-color: #ff00006e;
+  width: 40%;
+  border-radius: 5px;
+}

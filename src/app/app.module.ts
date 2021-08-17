@@ -1,6 +1,8 @@
+import { CurrencyPipe, DecimalPipe } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { AngularFireModule } from "@angular/fire";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { FormsModule } from "@angular/forms";
 import { MatCardModule } from "@angular/material/card";
 import { MatExpansionModule } from "@angular/material/expansion";
@@ -9,16 +11,14 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
 import { ToastrModule } from "ngx-toastr";
+import { environment } from "../environments/environment";
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app.routing";
+import { CadastrosModule } from "./cadastros/cadastros.module";
 import { CoreModule } from "./core/core.module";
+import { DashboardModule } from "./dashboard/dashboard.module";
 import { HomeModule } from "./home/home.module";
 import { FooterModule } from "./shared/footer/footer.module";
-import { environment } from "../environments/environment";
-import { AngularFirestoreModule } from "@angular/fire/firestore";
-import { DashboardModule } from "./dashboard/dashboard.module";
-import { CadastrosModule } from "./cadastros/cadastros.module";
-import { AlunoListModule } from "./cadastros/aluno/aluno-list/aluno-list.module";
 
 @NgModule({
   imports: [
@@ -46,7 +46,7 @@ import { AlunoListModule } from "./cadastros/aluno/aluno-list/aluno-list.module"
     ToastrModule.forRoot(),
   ],
   declarations: [AppComponent],
-  providers: [],
+  providers: [DecimalPipe, CurrencyPipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

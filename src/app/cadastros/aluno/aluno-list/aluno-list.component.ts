@@ -1,15 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { AlunoService } from "../aluno.service";
 
 @Component({
-  selector: 'app-aluno-list',
-  templateUrl: './aluno-list.component.html',
-  styleUrls: ['./aluno-list.component.css']
+  selector: "app-aluno-list",
+  templateUrl: "./aluno-list.component.html",
+  styleUrls: ["./aluno-list.component.css"],
 })
 export class AlunoListComponent implements OnInit {
+  data$;
 
-  constructor() { }
+  displayedColumns = [
+    { head: "Código", el: "id" },
+    { head: "Nome", el: "nome" },
+    { head: "Idade", el: "idade" },
+  ];
+
+  constructor(private router: Router, private service: AlunoService) {}
 
   ngOnInit(): void {
+    this.data$ = this.service.getClientes();
   }
 
+  onRowSelect($event) {
+    if (!$event) {
+      return;
+    }
+  }
 }

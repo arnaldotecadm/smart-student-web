@@ -1,0 +1,22 @@
+tr {
+  cursor: pointer;
+}
+tr.linha-coluna:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.linha-coluna:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.highlight {
+  background: #5c70ff94 !important;
+}
+
+.card {
+  margin-bottom: 5px;
+}
+
+thead {
+  background-color: #6fbce0a3 !important;
+}

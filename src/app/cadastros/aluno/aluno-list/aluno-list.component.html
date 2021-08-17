@@ -1,1 +1,7 @@
-<p>aluno-list works!</p>
+<app-tabela
+  *ngIf="data$ | async as data"
+  [displayedColumns]="displayedColumns"
+  [dados]="data"
+  [headerTitle]="'Lista de Clientes cadastrados no Sistema'"
+  (selectedRow)="onRowSelect($event)"
+></app-tabela>

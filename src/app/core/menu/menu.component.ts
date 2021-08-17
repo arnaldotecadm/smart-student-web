@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-
 import * as firebase from "firebase/app";
-import { Observable, Subject } from "rxjs";
+import { Subject } from "rxjs";
 import { UserService } from "../user/user.service";
 
 @Component({

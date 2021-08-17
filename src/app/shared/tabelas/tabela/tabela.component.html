@@ -1,0 +1,112 @@
+<div class="main-content" [class.mt-3]="marginTop">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 col-md-12">
+        <div class="card">
+          <div class="header" *ngIf="showHeader">
+            <div class="row mt-3">
+              <div class="form-group col-md-6">
+                <h4 class="title">{{ headerTitle }}</h4>
+              </div>
+              <div
+                class="form-group col-md-6 d-flex flex-row-reverse"
+                *ngIf="showAddButtom"
+              >
+                <button
+                  mat-button
+                  class="btn btn-info btn-fill"
+                  style="margin-right: 1%"
+                  (click)="propagate('add-new', '')"
+                >
+                  Adicionar Registro
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="content">
+            <div class="row" *ngIf="showFilter">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <input
+                    (keyup)="applyFilter($event)"
+                    placeholder="Filtre utilizando qualquer campo"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="row" *ngIf="showFilter">
+              <div class="col-md-12">
+                <ng-content select="[slot=filter]"></ng-content>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group horizontal-scroll">
+                  <table
+                    mat-table
+                    [dataSource]="datasource"
+                    class="mat-elevation-z2 col-md-12"
+                  >
+                    <!-- Numres Column -->
+                    <ng-container
+                      [matColumnDef]="col.el"
+                      *ngFor="let col of displayedColumns"
+                    >
+                      <th mat-header-cell *matHeaderCellDef>
+                        {{ col.head }}
+                      </th>
+                      <td mat-cell *matCellDef="let element">
+                        <div *ngIf="!col.botoes; else icones">
+                          {{ element[col.el] | pipeFormacaoColuna: col.format }}
+                        </div>
+                        <ng-template #icones>
+                          <img
+                            *ngFor="let acao of col.botoes"
+                            (click)="propagate(acao.acao, element)"
+                            [src]="'/assets/img/' + acao.icone"
+                            [alt]="acao.title"
+                            [title]="acao.title"
+                            width="25px"
+                            style="margin-left: 3%"
+                          />
+                        </ng-template>
+                      </td>
+                    </ng-container>
+
+                    <tr
+                      mat-header-row
+                      *matHeaderRowDef="cols"
+                      style="background-color: #6fbce0a3"
+                    ></tr>
+
+                    <tr
+                      mat-row
+                      *matRowDef="let row; columns: cols"
+                      class="linha-coluna"
+                      [class.highlight]="
+                        showSelect &&
+                        selectedRowIndex == row[this.displayedColumns[0].el]
+                      "
+                      (click)="highlight(row)"
+                    ></tr>
+                  </table>
+
+                  <mat-paginator
+                    [pageSizeOptions]="pageSizeOptions"
+                    showFirstLastButtons
+                  ></mat-paginator>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-8 col-lg-7 col-md-12"></div>
+    </div>
+  </div>
+</div>
+<ng-content></ng-content>
