@@ -17,6 +17,8 @@ import { FooterModule } from "./shared/footer/footer.module";
 import { environment } from "../environments/environment";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { DashboardModule } from "./dashboard/dashboard.module";
+import { CadastrosModule } from "./cadastros/cadastros.module";
+import { AlunoListModule } from "./cadastros/aluno/aluno-list/aluno-list.module";
 
 @NgModule({
   imports: [
@@ -38,6 +40,7 @@ import { DashboardModule } from "./dashboard/dashboard.module";
     MatIconModule,
     DashboardModule,
 
+    CadastrosModule,
     AngularFirestoreModule,
 
     ToastrModule.forRoot(),
