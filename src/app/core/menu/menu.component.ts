@@ -34,11 +34,17 @@ export class MenuComponent implements OnInit {
       this.currentUser$.next(firebase.default.auth().currentUser);
     });
 
-    let item = this.MENU_ITEMS.filter(
-      (item) => "/" + item.routerLink === this.location.path()
-    );
-    if (item && item.length > 0) {
-      this.selectedItem = item[0].label;
+    let itemFromUrl = this.location.path().split("/");
+
+    if (itemFromUrl.length == 0) {
+      this.selectedItem = "Home";
+    } else {
+      let item = this.MENU_ITEMS.filter(
+        (item) => item.routerLink === itemFromUrl[1]
+      );
+      if (item && item.length > 0) {
+        this.selectedItem = item[0].label;
+      }
     }
   }
 
