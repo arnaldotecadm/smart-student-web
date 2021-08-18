@@ -1,15 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Location } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { Observable } from "rxjs";
+import { ProfessorService } from "../professor.service";
 
 @Component({
-  selector: 'app-professor-form',
-  templateUrl: './professor-form.component.html',
-  styleUrls: ['./professor-form.component.css']
+  selector: "app-professor-form",
+  templateUrl: "./professor-form.component.html",
+  styleUrls: ["./professor-form.component.css"],
 })
 export class ProfessorFormComponent implements OnInit {
+  identifier: number;
+  obj$: Observable<any>;
 
-  constructor() { }
+  constructor(
+    private service: ProfessorService,
+    private route: ActivatedRoute,
+    public location: Location
+  ) {}
 
   ngOnInit(): void {
+    this.carregarDados();
   }
 
+  carregarDados() {
+    this.identifier = +this.route.snapshot.paramMap.get("identificador");
+    this.obj$ = this.service.getById(this.identifier);
+  }
 }

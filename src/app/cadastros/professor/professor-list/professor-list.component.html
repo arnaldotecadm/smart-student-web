@@ -1,1 +1,7 @@
-<p>professor-list works!</p>
+<app-tabela
+  *ngIf="data$ | async as data"
+  [displayedColumns]="displayedColumns"
+  [dados]="data"
+  [headerTitle]="'Lista de Professores cadastrados no Sistema'"
+  (selectedRow)="onRowSelect($event)"
+></app-tabela>

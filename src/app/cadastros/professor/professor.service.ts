@@ -8,7 +8,7 @@ const API = environment.ApiUrl;
 @Injectable({
   providedIn: "root",
 })
-export class AlunoService {
+export class ProfessorService {
   constructor(private http: HttpClient) {}
 
   getAll() {
