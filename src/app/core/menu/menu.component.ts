@@ -27,6 +27,7 @@ export class MenuComponent implements OnInit {
       routerLink: "notificacoes",
       icon: "notification_important",
       label: "Notificações",
+      showBadge: true,
     },
   ];
 

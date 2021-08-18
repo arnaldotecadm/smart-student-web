@@ -24,7 +24,12 @@
         (click)="selectedItem = menuItem.label"
       >
         <div class="menu-icon">
-          <mat-icon aria-hidden="false">{{ menuItem.icon }}</mat-icon>
+          <mat-icon
+            aria-hidden="false"
+            matBadge="7"
+            [matBadgeHidden]="!!!menuItem.showBadge"
+            >{{ menuItem.icon }}</mat-icon
+          >
         </div>
         <div>{{ menuItem.label }}</div>
       </div>
