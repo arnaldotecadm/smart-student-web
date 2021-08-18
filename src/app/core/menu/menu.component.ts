@@ -22,7 +22,11 @@ export class MenuComponent implements OnInit {
     { routerLink: "", icon: "grade", label: "Notas" },
     { routerLink: "", icon: "local_activity", label: "Atividades" },
     { routerLink: "configuracoes", icon: "settings", label: "Configurações" },
-    { routerLink: "", icon: "notification_important", label: "Notifações" },
+    {
+      routerLink: "notificacoes",
+      icon: "notification_important",
+      label: "Notifações",
+    },
   ];
 
   constructor(private userService: UserService, private location: Location) {}

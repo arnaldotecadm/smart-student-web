@@ -7,6 +7,7 @@ import { AlunoListComponent } from "./cadastros/aluno/aluno-list/aluno-list.comp
 import { ConfiguracaoComponent } from "./cadastros/configuracao/configuracao.component";
 import { MateriaFormComponent } from "./cadastros/materia/materia-form/materia-form.component";
 import { MateriaListComponent } from "./cadastros/materia/materia-list/materia-list.component";
+import { NotificacaoComponent } from "./cadastros/notificacao/notificacao.component";
 import { ProfessorFormComponent } from "./cadastros/professor/professor-form/professor-form.component";
 import { ProfessorListComponent } from "./cadastros/professor/professor-list/professor-list.component";
 import { AuthGuard } from "./core/auth/auth.guard";
@@ -71,6 +72,12 @@ const routes: Routes = [
   {
     path: "configuracoes",
     component: ConfiguracaoComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: "notificacoes",
+    component: NotificacaoComponent,
     canActivate: [AuthGuard],
   },
 
