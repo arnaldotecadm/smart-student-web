@@ -1,5 +1,9 @@
+import { Location } from "@angular/common";
+import { isNgTemplate } from "@angular/compiler";
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 import * as firebase from "firebase/app";
+import { locale } from "moment";
 import { Subject } from "rxjs";
 import { UserService } from "../user/user.service";
 
@@ -23,12 +27,19 @@ export class MenuComponent implements OnInit {
     { routerLink: "", icon: "settings", label: "Configurações" },
   ];
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private location: Location) {}
 
   ngOnInit(): void {
     firebase.default.auth().onAuthStateChanged((data) => {
       this.currentUser$.next(firebase.default.auth().currentUser);
     });
+
+    let item = this.MENU_ITEMS.filter(
+      (item) => "/" + item.routerLink === this.location.path()
+    );
+    if (item && item.length > 0) {
+      this.selectedItem = item[0].label;
+    }
   }
 
   logout() {
