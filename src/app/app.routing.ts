@@ -4,6 +4,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 import { AlunoFormComponent } from "./cadastros/aluno/aluno-form/aluno-form.component";
 import { AlunoListComponent } from "./cadastros/aluno/aluno-list/aluno-list.component";
+import { MateriaFormComponent } from "./cadastros/materia/materia-form/materia-form.component";
+import { MateriaListComponent } from "./cadastros/materia/materia-list/materia-list.component";
 import { ProfessorFormComponent } from "./cadastros/professor/professor-form/professor-form.component";
 import { ProfessorListComponent } from "./cadastros/professor/professor-list/professor-list.component";
 import { AuthGuard } from "./core/auth/auth.guard";
@@ -38,6 +40,18 @@ const routes: Routes = [
   {
     path: "professores/professor/:identificador",
     component: ProfessorFormComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: "materias",
+    component: MateriaListComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: "materias/materia/:identificador",
+    component: MateriaFormComponent,
     canActivate: [AuthGuard],
   },
 
