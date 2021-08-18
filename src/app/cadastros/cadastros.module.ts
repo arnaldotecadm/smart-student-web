@@ -13,6 +13,9 @@ import { NotificacaoModule } from "./notificacao/notificacao.module";
 import { ProfessorFormComponent } from "./professor/professor-form/professor-form.component";
 import { ProfessorListComponent } from "./professor/professor-list/professor-list.component";
 import { ProfessorModule } from "./professor/professor.module";
+import { TurmaFormComponent } from "./turma/turma-form/turma-form.component";
+import { TurmaListComponent } from "./turma/turma-list/turma-list.component";
+import { TurmaModule } from "./turma/turma.module";
 
 @NgModule({
   declarations: [],
@@ -23,6 +26,7 @@ import { ProfessorModule } from "./professor/professor.module";
     MateriaModule,
     ConfiguracaoModule,
     NotificacaoModule,
+    TurmaModule,
   ],
   exports: [
     AlunoListComponent,
@@ -33,6 +37,8 @@ import { ProfessorModule } from "./professor/professor.module";
     MateriaListComponent,
     ConfiguracaoComponent,
     NotificacaoComponent,
+    TurmaListComponent,
+    TurmaFormComponent,
   ],
 })
 export class CadastrosModule {}

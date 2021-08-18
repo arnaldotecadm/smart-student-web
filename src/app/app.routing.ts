@@ -10,6 +10,8 @@ import { MateriaListComponent } from "./cadastros/materia/materia-list/materia-l
 import { NotificacaoComponent } from "./cadastros/notificacao/notificacao.component";
 import { ProfessorFormComponent } from "./cadastros/professor/professor-form/professor-form.component";
 import { ProfessorListComponent } from "./cadastros/professor/professor-list/professor-list.component";
+import { TurmaFormComponent } from "./cadastros/turma/turma-form/turma-form.component";
+import { TurmaListComponent } from "./cadastros/turma/turma-list/turma-list.component";
 import { AuthGuard } from "./core/auth/auth.guard";
 import { SigninComponent } from "./core/signin/signin.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
@@ -54,6 +56,18 @@ const routes: Routes = [
   {
     path: "professores/professor/:identificador",
     component: ProfessorFormComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: "turmas",
+    component: TurmaListComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: "turmas/turma/:identificador",
+    component: TurmaFormComponent,
     canActivate: [AuthGuard],
   },
 
