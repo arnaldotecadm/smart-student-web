@@ -4,6 +4,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 import { AlunoFormComponent } from "./cadastros/aluno/aluno-form/aluno-form.component";
 import { AlunoListComponent } from "./cadastros/aluno/aluno-list/aluno-list.component";
+import { ConfiguracaoComponent } from "./cadastros/configuracao/configuracao.component";
 import { MateriaFormComponent } from "./cadastros/materia/materia-form/materia-form.component";
 import { MateriaListComponent } from "./cadastros/materia/materia-list/materia-list.component";
 import { ProfessorFormComponent } from "./cadastros/professor/professor-form/professor-form.component";
@@ -17,6 +18,18 @@ const routes: Routes = [
   {
     path: "sigin-in",
     component: SigninComponent,
+  },
+
+  {
+    path: "home",
+    component: HomePageComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: "dashboard",
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
   },
 
   {
@@ -56,14 +69,8 @@ const routes: Routes = [
   },
 
   {
-    path: "home",
-    component: HomePageComponent,
-    canActivate: [AuthGuard],
-  },
-
-  {
-    path: "dashboard",
-    component: DashboardComponent,
+    path: "configuracoes",
+    component: ConfiguracaoComponent,
     canActivate: [AuthGuard],
   },
 
