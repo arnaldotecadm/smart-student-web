@@ -19,12 +19,13 @@ export class AlunoListComponent implements OnInit {
   constructor(private router: Router, private service: AlunoService) {}
 
   ngOnInit(): void {
-    this.data$ = this.service.getClientes();
+    this.data$ = this.service.getAll();
   }
 
   onRowSelect($event) {
     if (!$event) {
       return;
     }
+    this.router.navigate(["alunos/aluno/" + $event.id]);
   }
 }

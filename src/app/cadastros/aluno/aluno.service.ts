@@ -11,8 +11,12 @@ const API = environment.ApiUrl;
 export class AlunoService {
   constructor(private http: HttpClient) {}
 
-  getClientes() {
+  getAll() {
     return of([{ id: 1, nome: "Arnaldo", idade: 28 }]);
+  }
+
+  getById(id: number) {
+    return of({ id: 1, nome: "Arnaldo", idade: 28 });
   }
 
   getClienteInfo(codigoCliente: number) {

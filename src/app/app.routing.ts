@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
+import { AlunoFormComponent } from "./cadastros/aluno/aluno-form/aluno-form.component";
 import { AlunoListComponent } from "./cadastros/aluno/aluno-list/aluno-list.component";
 import { ProfessorListComponent } from "./cadastros/professor/professor-list/professor-list.component";
 import { AuthGuard } from "./core/auth/auth.guard";
@@ -18,6 +19,12 @@ const routes: Routes = [
   {
     path: "alunos",
     component: AlunoListComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: "alunos/aluno/:identificador",
+    component: AlunoFormComponent,
     canActivate: [AuthGuard],
   },
 
