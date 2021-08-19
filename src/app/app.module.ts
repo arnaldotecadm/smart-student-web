@@ -1,5 +1,5 @@
 import { CurrencyPipe, DecimalPipe } from "@angular/common";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
@@ -15,6 +15,7 @@ import { environment } from "../environments/environment";
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app.routing";
 import { CadastrosModule } from "./cadastros/cadastros.module";
+import { RequestInterceptor } from "./core/auth/request.interceptor.service";
 import { CoreModule } from "./core/core.module";
 import { DashboardModule } from "./dashboard/dashboard.module";
 import { HomeModule } from "./home/home.module";
@@ -46,7 +47,15 @@ import { FooterModule } from "./shared/footer/footer.module";
     ToastrModule.forRoot(),
   ],
   declarations: [AppComponent],
-  providers: [DecimalPipe, CurrencyPipe],
+  providers: [
+    DecimalPipe,
+    CurrencyPipe,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

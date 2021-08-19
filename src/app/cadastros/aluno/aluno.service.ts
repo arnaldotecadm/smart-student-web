@@ -12,7 +12,7 @@ export class AlunoService {
   constructor(private http: HttpClient) {}
 
   getAll() {
-    return of([{ id: 1, nome: "Arnaldo", idade: 28 }]);
+    return this.http.get<any[]>(API + "/aluno");
   }
 
   getById(id: number) {
