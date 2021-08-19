@@ -25,7 +25,7 @@ export class ProfessorListComponent implements OnInit {
   displayedColumns = [
     { head: "Código", el: "id" },
     { head: "Nome", el: "nome" },
-    { head: "Descrição", el: "descricao" },
+    { head: "Telefone", el: "telefone" },
     { head: "Ações", el: "actions", botoes: this.botoes },
   ];
 
