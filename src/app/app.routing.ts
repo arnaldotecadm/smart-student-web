@@ -85,6 +85,7 @@ const routes: Routes = [
     path: "materias/materia/:identificador",
     component: MateriaFormComponent,
     canActivate: [AuthGuard],
+    canDeactivate: [CanDeactivateGuard],
   },
 
   {

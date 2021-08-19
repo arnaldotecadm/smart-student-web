@@ -10,12 +10,19 @@ const API = environment.ApiUrl;
 })
 export class MateriaService {
   constructor(private http: HttpClient) {}
-
   getAll() {
-    return of([{ id: 1, nome: "Arnaldo", idade: 28 }]);
+    return this.http.get<any[]>(API + "/materia");
   }
 
-  getById(id: number) {
-    return of({ id: 1, nome: "Arnaldo", idade: 28 });
+  getById(id: string) {
+    return this.http.get<any[]>(API + "/materia/" + id);
+  }
+
+  salvarRegistro(formData: FormData) {
+    return this.http.post<any>(API + "/materia", formData);
+  }
+
+  deleteById(id: string) {
+    return this.http.delete<any[]>(API + "/materia/" + id);
   }
 }

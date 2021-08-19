@@ -61,7 +61,7 @@ export class TurmaFormComponent extends FormCanDeactivate implements OnInit {
       .salvarRegistro(this.formulario.getRawValue())
       .subscribe((resposta: any) => {
         this.ngForm.resetForm();
-        this.formulario.patchValue(resposta);
+        this.voltar();
       });
   }
 
