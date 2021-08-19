@@ -1,6 +1,6 @@
 import { Location } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { AlunoService } from "../aluno.service";
 
@@ -16,11 +16,15 @@ export class AlunoFormComponent implements OnInit {
   constructor(
     private service: AlunoService,
     private route: ActivatedRoute,
-    public location: Location
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.carregarDados();
+  }
+
+  voltar() {
+    this.router.navigate(["turmas"]);
   }
 
   carregarDados() {

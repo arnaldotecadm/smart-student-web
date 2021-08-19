@@ -14,7 +14,7 @@
 
                     <div class="form-group col-md-2 d-flex flex-row-reverse">
                       <button
-                        (click)="this.location.back()"
+                        (click)="voltar()"
                         class="btn btn-info btn-fill col-md-12"
                       >
                         Voltar
@@ -37,7 +37,7 @@
                           Informações Principais
                         </mat-panel-title>
                       </mat-expansion-panel-header>
-                      <form [formGroup]="formulario">
+                      <form [formGroup]="formulario" #formTurma="ngForm">
                         <div class="row">
                           <div class="col-md-1">
                             <div class="form-group">

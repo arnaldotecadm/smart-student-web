@@ -15,6 +15,7 @@ import { TurmaListComponent } from "./cadastros/turma/turma-list/turma-list.comp
 import { AuthGuard } from "./core/auth/auth.guard";
 import { SigninComponent } from "./core/signin/signin.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { CanDeactivateGuard } from "./guards/can-deactivate-guard.service";
 import { HomePageComponent } from "./home/home-page/home-page.component";
 
 const routes: Routes = [
@@ -69,6 +70,7 @@ const routes: Routes = [
     path: "turmas/turma/:identificador",
     component: TurmaFormComponent,
     canActivate: [AuthGuard],
+    canDeactivate: [CanDeactivateGuard],
   },
 
   {
@@ -108,5 +110,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { useHash: true }),
   ],
   exports: [],
+  providers: [CanDeactivateGuard],
 })
 export class AppRoutingModule {}

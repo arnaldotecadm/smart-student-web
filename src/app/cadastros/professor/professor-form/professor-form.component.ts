@@ -1,6 +1,6 @@
 import { Location } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { ProfessorService } from "../professor.service";
 
@@ -16,11 +16,15 @@ export class ProfessorFormComponent implements OnInit {
   constructor(
     private service: ProfessorService,
     private route: ActivatedRoute,
-    public location: Location
+    public router: Router
   ) {}
 
   ngOnInit(): void {
     this.carregarDados();
+  }
+
+  voltar() {
+    this.router.navigate(["turmas"]);
   }
 
   carregarDados() {

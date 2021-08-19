@@ -1,7 +1,8 @@
 import { Location } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { FormCanDeactivate } from "app/guards/form-can-deactivate.component";
 import { Observable } from "rxjs";
 import { TurmaService } from "../turma.service";
 
@@ -10,7 +11,9 @@ import { TurmaService } from "../turma.service";
   templateUrl: "./turma-form.component.html",
   styleUrls: ["./turma-form.component.css"],
 })
-export class TurmaFormComponent implements OnInit {
+export class TurmaFormComponent extends FormCanDeactivate implements OnInit {
+  @ViewChild("formTurma") ngForm: NgForm;
+
   identifier: string;
   obj$: Observable<any>;
   formulario: FormGroup;
@@ -18,14 +21,19 @@ export class TurmaFormComponent implements OnInit {
   constructor(
     private service: TurmaService,
     private route: ActivatedRoute,
-    public location: Location,
     private formBuilder: FormBuilder,
     private router: Router
-  ) {}
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
     this.construirFormulario();
     this.carregarDados();
+  }
+
+  get form(): NgForm {
+    return this.ngForm;
   }
 
   carregarDados() {
@@ -35,6 +43,10 @@ export class TurmaFormComponent implements OnInit {
         this.formulario.patchValue(data);
       }
     });
+  }
+
+  voltar() {
+    this.router.navigate(["turmas"]);
   }
 
   update() {
