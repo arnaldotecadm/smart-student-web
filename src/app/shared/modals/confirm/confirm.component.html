@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>{{ caption }}</h2>
+<div mat-dialog-content>
+  <p>{{ subtitle }}</p>
+</div>
+<div mat-dialog-actions>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <button
+          mat-button
+          (click)="onNoClick()"
+          class="btn btn-danger btn-fill"
+        >
+          {{ btnCancelLabel }}
+        </button>
+      </div>
+      <div class="col-md-6 d-flex flex-row-reverse">
+        <button
+          mat-button
+          cdkFocusInitial
+          (click)="onYesClick()"
+          class="btn btn-info btn-fill"
+        >
+          {{ btnOkLabel }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

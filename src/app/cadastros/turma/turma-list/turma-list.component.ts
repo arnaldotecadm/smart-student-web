@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
+import { MustConfirm } from "app/decorators/must-confirm.decorators";
 import { TurmaService } from "../turma.service";
 
 @Component({
@@ -9,6 +11,7 @@ import { TurmaService } from "../turma.service";
 })
 export class TurmaListComponent implements OnInit {
   data$;
+  itemSelecionado;
 
   botoes = [
     {
@@ -26,9 +29,17 @@ export class TurmaListComponent implements OnInit {
     { head: "Ações", el: "actions", botoes: this.botoes },
   ];
 
-  constructor(private router: Router, private service: TurmaService) {}
+  constructor(
+    private router: Router,
+    private service: TurmaService,
+    protected dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData() {
     this.data$ = this.service.getAll();
   }
 
@@ -40,13 +51,20 @@ export class TurmaListComponent implements OnInit {
   }
 
   executarAcao(acaoPropagate) {
-    console.log("Acao selecionada: " + acaoPropagate.acao);
-    console.log("Item selecionado: " + JSON.stringify(acaoPropagate.item));
+    this.itemSelecionado = acaoPropagate.item;
     switch (acaoPropagate.acao) {
       case "add-new":
         this.router.navigate(["turmas/turma/0"]);
         break;
-      case "exibirDetalhe":
+      case "excluir":
+        this.excluirItem();
     }
+  }
+
+  @MustConfirm("Deseja realemnte excluir este registro?")
+  excluirItem() {
+    this.service
+      .deleteById(this.itemSelecionado.documentId)
+      .subscribe(() => this.loadData());
   }
 }

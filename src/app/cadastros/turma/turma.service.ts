@@ -22,4 +22,8 @@ export class TurmaService {
   salvarRegistro(formData: FormData) {
     return this.http.post<any>(API + "/turma", formData);
   }
+
+  deleteById(id: string) {
+    return this.http.delete<any[]>(API + "/turma/" + id);
+  }
 }

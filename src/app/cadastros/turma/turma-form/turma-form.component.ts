@@ -31,7 +31,9 @@ export class TurmaFormComponent implements OnInit {
   carregarDados() {
     this.identifier = this.route.snapshot.paramMap.get("identificador");
     this.service.getById(this.identifier).subscribe((data) => {
-      this.formulario.patchValue(data);
+      if (data) {
+        this.formulario.patchValue(data);
+      }
     });
   }
 
