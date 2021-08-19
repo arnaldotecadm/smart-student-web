@@ -64,6 +64,7 @@ export class ProfessorFormComponent
     this.service
       .salvarRegistro(this.formulario.getRawValue())
       .subscribe((resposta: any) => {
+        this.ngForm.resetForm();
         this.formulario.patchValue(resposta);
       });
   }
