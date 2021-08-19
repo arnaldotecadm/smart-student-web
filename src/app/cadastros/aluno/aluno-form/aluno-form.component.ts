@@ -61,6 +61,7 @@ export class AlunoFormComponent extends FormCanDeactivate implements OnInit {
     this.service
       .salvarRegistro(this.formulario.getRawValue())
       .subscribe((resposta: any) => {
+        this.ngForm.resetForm();
         this.formulario.patchValue(resposta);
       });
   }

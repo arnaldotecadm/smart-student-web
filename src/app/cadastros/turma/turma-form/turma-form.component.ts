@@ -60,8 +60,8 @@ export class TurmaFormComponent extends FormCanDeactivate implements OnInit {
     this.service
       .salvarRegistro(this.formulario.getRawValue())
       .subscribe((resposta: any) => {
-        console.log("Resposta do servidor: " + resposta.message);
-        this.router.navigate(["turmas"]);
+        this.ngForm.resetForm();
+        this.formulario.patchValue(resposta);
       });
   }
 
