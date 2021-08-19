@@ -15,7 +15,15 @@ export class AlunoService {
     return this.http.get<any[]>(API + "/aluno");
   }
 
-  getById(id: number) {
-    return of({ id: 1, nome: "Arnaldo", idade: 28 });
+  getById(id: string) {
+    return this.http.get<any[]>(API + "/aluno/" + id);
+  }
+
+  salvarRegistro(formData: FormData) {
+    return this.http.post<any>(API + "/aluno", formData);
+  }
+
+  deleteById(id: string) {
+    return this.http.delete<any[]>(API + "/aluno/" + id);
   }
 }

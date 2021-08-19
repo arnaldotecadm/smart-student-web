@@ -1,6 +1,6 @@
 <div class="main-content mt-3">
   <div class="container-fluid">
-    <div class="row" *ngIf="obj$ | async as vendedor">
+    <div class="row">
       <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 col-md-12">
         <mat-tab-group animationDuration="0ms">
           <mat-tab label="Identificação">
@@ -18,6 +18,12 @@
                         class="btn btn-info btn-fill col-md-12"
                       >
                         Voltar
+                      </button>
+                      <button
+                        class="mr-1 btn btn-success btn-fill col-md-12"
+                        (click)="update()"
+                      >
+                        Gravar
                       </button>
                     </div>
                   </div>
@@ -44,147 +50,165 @@
                       Lembretes
                     </button>
                   </div>
-                  <mat-accordion [multi]="true">
-                    <mat-expansion-panel [expanded]="true">
-                      <mat-expansion-panel-header>
-                        <mat-panel-title>
-                          Informações Principais
-                        </mat-panel-title>
-                      </mat-expansion-panel-header>
+                  <form [formGroup]="formulario" #formAluno="ngForm">
+                    <mat-accordion [multi]="true">
+                      <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            Informações Principais
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
 
-                      <div class="row">
-                        <div class="col-md-1">
-                          <div class="form-group">
-                            <label>Código</label>
-                            <input class="form-control" disabled />
+                        <div class="row">
+                          <div class="col-md-1">
+                            <div class="form-group">
+                              <label>Código</label>
+                              <input
+                                class="form-control"
+                                formControlName="id"
+                              />
+                            </div>
+                          </div>
+
+                          <div class="col-md-11">
+                            <div class="form-group">
+                              <label>Nome Completo</label>
+                              <input
+                                class="form-control"
+                                formControlName="nome"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+
+                      <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            Endereço / Telefone / Email
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <div class="row">
+                          <div class="col-md-2">
+                            <div class="form-group">
+                              <label>CEP</label>
+                              <input
+                                class="form-control"
+                                formControlName="cep"
+                              />
+                            </div>
                           </div>
                         </div>
 
-                        <div class="col-md-11">
-                          <div class="form-group">
-                            <label>Nome Completo</label>
-                            <input class="form-control" disabled />
+                        <div class="row">
+                          <div class="col-md-2">
+                            <div class="form-group">
+                              <label>Tipo</label>
+                              <input
+                                class="form-control"
+                                formControlName="tipoCep"
+                              />
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                    </mat-expansion-panel>
 
-                    <mat-expansion-panel>
-                      <mat-expansion-panel-header>
-                        <mat-panel-title>
-                          Endereço / Telefone / Email
-                        </mat-panel-title>
-                      </mat-expansion-panel-header>
-
-                      <div class="row">
-                        <div class="col-md-2">
-                          <div class="form-group">
-                            <label>CEP</label>
-                            <input class="form-control" disabled />
+                          <div class="col-md-7">
+                            <div class="form-group">
+                              <label>Endereço</label>
+                              <input
+                                class="form-control"
+                                formControlName="endereco"
+                              />
+                            </div>
                           </div>
-                        </div>
-                      </div>
 
-                      <div class="row">
-                        <div class="col-md-2">
-                          <div class="form-group">
-                            <label>Tipo</label>
-                            <input class="form-control" disabled />
-                          </div>
-                        </div>
-
-                        <div class="col-md-7">
-                          <div class="form-group">
-                            <label>Endereço</label>
-                            <input class="form-control" disabled />
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label>Nº</label>
+                              <input
+                                class="form-control"
+                                formControlName="numero"
+                              />
+                            </div>
                           </div>
                         </div>
 
-                        <div class="col-md-3">
-                          <div class="form-group">
-                            <label>Nº</label>
-                            <input class="form-control" disabled />
+                        <div class="row">
+                          <div class="col-md-2">
+                            <div class="form-group">
+                              <label>UF</label>
+                              <input
+                                class="form-control"
+                                formControlName="uf"
+                              />
+                            </div>
                           </div>
-                        </div>
-                      </div>
 
-                      <div class="row">
-                        <div class="col-md-2">
-                          <div class="form-group">
-                            <label>UF</label>
-                            <input class="form-control" disabled />
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label>Bairro</label>
+                              <input
+                                class="form-control"
+                                formControlName="bairro"
+                              />
+                            </div>
                           </div>
-                        </div>
 
-                        <div class="col-md-4">
-                          <div class="form-group">
-                            <label>Bairro</label>
-                            <input class="form-control" disabled />
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label>Cidade</label>
+                              <input
+                                class="form-control"
+                                formControlName="cidade"
+                              />
+                            </div>
                           </div>
-                        </div>
 
-                        <div class="col-md-3">
-                          <div class="form-group">
-                            <label>Cidade</label>
-                            <input class="form-control" disabled />
-                          </div>
-                        </div>
-
-                        <div class="col-md-3">
-                          <div class="form-group">
-                            <label>Complemento</label>
-                            <input class="form-control" disabled />
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-md-1">
-                          <div class="form-group">
-                            <label>DDD</label>
-                            <input class="form-control" disabled />
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label>Complemento</label>
+                              <input
+                                class="form-control"
+                                formControlName="complemento"
+                              />
+                            </div>
                           </div>
                         </div>
 
-                        <div class="col-md-3">
-                          <div class="form-group">
-                            <label>Telefone</label>
-                            <input class="form-control" disabled />
+                        <div class="row">
+                          <div class="col-md-2">
+                            <div class="form-group">
+                              <label>Telefone</label>
+                              <input
+                                class="form-control"
+                                formControlName="telefone"
+                              />
+                            </div>
                           </div>
-                        </div>
 
-                        <div class="col-md-4">
-                          <div class="form-group">
-                            <label>Contato</label>
-                            <input class="form-control" disabled />
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label>Contato</label>
+                              <input
+                                class="form-control"
+                                formControlName="contato"
+                              />
+                            </div>
                           </div>
-                        </div>
 
-                        <div class="col-md-1">
-                          <div class="form-group">
-                            <label>DDD</label>
-                            <input class="form-control" disabled />
+                          <div class="col-md-7">
+                            <div class="form-group">
+                              <label>E-mail</label>
+                              <input
+                                class="form-control"
+                                formControlName="email"
+                              />
+                            </div>
                           </div>
                         </div>
-
-                        <div class="col-md-3">
-                          <div class="form-group">
-                            <label>Celular</label>
-                            <input class="form-control" disabled />
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-md-5">
-                          <div class="form-group">
-                            <label>E-mail</label>
-                            <input class="form-control" disabled />
-                          </div>
-                        </div>
-                      </div>
-                    </mat-expansion-panel>
-                  </mat-accordion>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </form>
                 </div>
               </div>
             </ng-template>
