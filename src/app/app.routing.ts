@@ -46,6 +46,7 @@ const routes: Routes = [
     path: "alunos/aluno/:identificador",
     component: AlunoFormComponent,
     canActivate: [AuthGuard],
+    canDeactivate: [CanDeactivateGuard],
   },
 
   {
@@ -58,6 +59,7 @@ const routes: Routes = [
     path: "professores/professor/:identificador",
     component: ProfessorFormComponent,
     canActivate: [AuthGuard],
+    canDeactivate: [CanDeactivateGuard],
   },
 
   {
