@@ -12,10 +12,18 @@ export class ProfessorService {
   constructor(private http: HttpClient) {}
 
   getAll() {
-    return of([{ id: 1, nome: "Arnaldo", idade: 28 }]);
+    return this.http.get<any[]>(API + "/professor");
   }
 
-  getById(id: number) {
-    return of({ id: 1, nome: "Arnaldo", idade: 28 });
+  getById(id: string) {
+    return this.http.get<any[]>(API + "/professor/" + id);
+  }
+
+  salvarRegistro(formData: FormData) {
+    return this.http.post<any>(API + "/professor", formData);
+  }
+
+  deleteById(id: string) {
+    return this.http.delete<any[]>(API + "/professor/" + id);
   }
 }

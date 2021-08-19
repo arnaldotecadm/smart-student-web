@@ -23,7 +23,7 @@ export class TurmaListComponent implements OnInit {
   ];
 
   displayedColumns = [
-    { head: "Código", el: "documentId" },
+    { head: "Código", el: "id" },
     { head: "Nome", el: "nome" },
     { head: "Descrição", el: "descricao" },
     { head: "Ações", el: "actions", botoes: this.botoes },

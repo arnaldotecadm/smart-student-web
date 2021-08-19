@@ -4,4 +4,6 @@
   [dados]="data"
   [headerTitle]="'Lista de Professores cadastrados no Sistema'"
   (selectedRow)="onRowSelect($event)"
+  [showAddButtom]="true"
+  (acaoSelecionada)="executarAcao($event)"
 ></app-tabela>
