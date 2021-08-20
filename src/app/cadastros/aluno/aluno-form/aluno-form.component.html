@@ -101,6 +101,28 @@
                               />
                             </div>
                           </div>
+
+                          <div class="col-md-8">
+                            <div
+                              class="form-group"
+                              *ngIf="todasTurmas$ | async as turmas"
+                            >
+                              <label>Turma</label>
+                              <select
+                                class="custom-select"
+                                matNativeControl
+                                formControlName="turma"
+                              >
+                                <option>Selecione um Registro</option>
+                                <option
+                                  *ngFor="let turma of turmas"
+                                  [value]="turma.documentId"
+                                >
+                                  {{ turma.nome }}
+                                </option>
+                              </select>
+                            </div>
+                          </div>
                         </div>
                       </mat-expansion-panel>
 

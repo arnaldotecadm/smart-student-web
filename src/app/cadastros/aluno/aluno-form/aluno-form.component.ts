@@ -18,6 +18,8 @@ export class AlunoFormComponent extends FormCanDeactivate implements OnInit {
   obj$: Observable<any>;
   formulario: FormGroup;
 
+  todasTurmas$: Observable<any>;
+
   constructor(
     private service: AlunoService,
     private route: ActivatedRoute,
@@ -37,6 +39,8 @@ export class AlunoFormComponent extends FormCanDeactivate implements OnInit {
   }
 
   carregarDados() {
+    this.todasTurmas$ = this.service.getAllTurmas();
+
     this.identifier = this.route.snapshot.paramMap.get("identificador");
     this.service.getById(this.identifier).subscribe((data) => {
       if (data) {
@@ -72,6 +76,7 @@ export class AlunoFormComponent extends FormCanDeactivate implements OnInit {
       id: [{ value: "", disabled: true }],
       nome: ["", Validators.required],
       matricula: [],
+      turma: [],
       cpf: [],
       cep: [],
       tipoCep: [],
