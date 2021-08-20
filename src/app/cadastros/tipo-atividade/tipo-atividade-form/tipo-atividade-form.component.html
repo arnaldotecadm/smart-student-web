@@ -37,7 +37,10 @@
                           Informações Principais
                         </mat-panel-title>
                       </mat-expansion-panel-header>
-                      <form [formGroup]="formulario" #formAtividade="ngForm">
+                      <form
+                        [formGroup]="formulario"
+                        #formTipoAtividade="ngForm"
+                      >
                         <div class="row">
                           <div class="col-md-1">
                             <div class="form-group">
@@ -51,11 +54,11 @@
 
                           <div class="col-md-11">
                             <div class="form-group">
-                              <label>Nome da Atividade</label>
+                              <label>Nome do Tipo Atividade</label>
                               <input
                                 class="form-control"
                                 formControlName="nome"
-                                placeholder="De um nome para essa atividade"
+                                placeholder="De um nome para esse Tipo de Atividade"
                               />
                             </div>
                           </div>
@@ -68,7 +71,7 @@
                               <textarea
                                 class="form-control"
                                 matInput
-                                placeholder="Aqui voce pode descriver um pouco essa atividade"
+                                placeholder="Aqui voce pode descriver um pouco esse Tipo de Atividade"
                                 formControlName="descricao"
                               ></textarea>
                             </div>

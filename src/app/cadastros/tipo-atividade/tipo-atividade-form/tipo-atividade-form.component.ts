@@ -14,7 +14,7 @@ export class TipoAtividadeFormComponent
   extends FormCanDeactivate
   implements OnInit
 {
-  @ViewChild("formAtividade") ngForm: NgForm;
+  @ViewChild("formTipoAtividade") ngForm: NgForm;
 
   identifier: string;
   obj$: Observable<any>;
