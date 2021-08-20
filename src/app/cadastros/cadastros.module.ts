@@ -3,6 +3,9 @@ import { NgModule } from "@angular/core";
 import { AlunoFormComponent } from "./aluno/aluno-form/aluno-form.component";
 import { AlunoListComponent } from "./aluno/aluno-list/aluno-list.component";
 import { AlunoModule } from "./aluno/aluno.module";
+import { AtividadeFormComponent } from "./atividade/atividade-form/atividade-form.component";
+import { AtividadeListComponent } from "./atividade/atividade-list/atividade-list.component";
+import { AtividadeModule } from "./atividade/atividade.module";
 import { ConfiguracaoComponent } from "./configuracao/configuracao.component";
 import { ConfiguracaoModule } from "./configuracao/configuracao.module";
 import { MateriaFormComponent } from "./materia/materia-form/materia-form.component";
@@ -27,6 +30,7 @@ import { TurmaModule } from "./turma/turma.module";
     ConfiguracaoModule,
     NotificacaoModule,
     TurmaModule,
+    AtividadeModule,
   ],
   exports: [
     AlunoListComponent,
@@ -39,6 +43,8 @@ import { TurmaModule } from "./turma/turma.module";
     NotificacaoComponent,
     TurmaListComponent,
     TurmaFormComponent,
+    AtividadeFormComponent,
+    AtividadeListComponent,
   ],
 })
 export class CadastrosModule {}

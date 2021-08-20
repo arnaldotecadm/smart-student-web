@@ -4,6 +4,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 import { AlunoFormComponent } from "./cadastros/aluno/aluno-form/aluno-form.component";
 import { AlunoListComponent } from "./cadastros/aluno/aluno-list/aluno-list.component";
+import { AtividadeFormComponent } from "./cadastros/atividade/atividade-form/atividade-form.component";
+import { AtividadeListComponent } from "./cadastros/atividade/atividade-list/atividade-list.component";
 import { ConfiguracaoComponent } from "./cadastros/configuracao/configuracao.component";
 import { MateriaFormComponent } from "./cadastros/materia/materia-form/materia-form.component";
 import { MateriaListComponent } from "./cadastros/materia/materia-list/materia-list.component";
@@ -84,6 +86,19 @@ const routes: Routes = [
   {
     path: "materias/materia/:identificador",
     component: MateriaFormComponent,
+    canActivate: [AuthGuard],
+    canDeactivate: [CanDeactivateGuard],
+  },
+
+  {
+    path: "atividades",
+    component: AtividadeListComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: "atividades/atividade/:identificador",
+    component: AtividadeFormComponent,
     canActivate: [AuthGuard],
     canDeactivate: [CanDeactivateGuard],
   },
