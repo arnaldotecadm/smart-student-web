@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { AtividadeListComponent } from "./tipo-atividade-list.component";
+import { TipoAtividadeListComponent } from "./tipo-atividade-list.component";
 import { ModalsModule } from "app/shared/modals/modals.module";
 import { TabelasModule } from "app/shared/tabelas/tabelas.module";
 
 @NgModule({
-  declarations: [AtividadeListComponent],
+  declarations: [TipoAtividadeListComponent],
   imports: [CommonModule, TabelasModule, ModalsModule],
-  exports: [AtividadeListComponent],
+  exports: [TipoAtividadeListComponent],
 })
-export class AtividadeListModule {}
+export class TipoAtividadeListModule {}

@@ -24,6 +24,11 @@ export class MenuComponent implements OnInit {
     {
       routerLink: "atividades",
       icon: "local_activity",
+      label: "Atividades",
+    },
+    {
+      routerLink: "tipo-atividades",
+      icon: "local_activity",
       label: "Tipos de Atividades",
     },
     { routerLink: "configuracoes", icon: "settings", label: "Configurações" },

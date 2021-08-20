@@ -4,8 +4,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 import { AlunoFormComponent } from "./cadastros/aluno/aluno-form/aluno-form.component";
 import { AlunoListComponent } from "./cadastros/aluno/aluno-list/aluno-list.component";
-import { AtividadeFormComponent } from "./cadastros/tipo-atividade/tipo-atividade-form/tipo-atividade-form.component";
-import { AtividadeListComponent } from "./cadastros/tipo-atividade/tipo-atividade-list/tipo-atividade-list.component";
+import { TipoAtividadeFormComponent } from "./cadastros/tipo-atividade/tipo-atividade-form/tipo-atividade-form.component";
+import { TipoAtividadeListComponent } from "./cadastros/tipo-atividade/tipo-atividade-list/tipo-atividade-list.component";
 import { ConfiguracaoComponent } from "./cadastros/configuracao/configuracao.component";
 import { MateriaFormComponent } from "./cadastros/materia/materia-form/materia-form.component";
 import { MateriaListComponent } from "./cadastros/materia/materia-list/materia-list.component";
@@ -21,6 +21,8 @@ import { SigninComponent } from "./core/signin/signin.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { CanDeactivateGuard } from "./guards/can-deactivate-guard.service";
 import { HomePageComponent } from "./home/home-page/home-page.component";
+import { AtividadeListComponent } from "./cadastros/atividade/atividade-list/atividade-list.component";
+import { AtividadeFormComponent } from "./cadastros/atividade/atividade-form/atividade-form.component";
 
 const routes: Routes = [
   {
@@ -114,6 +116,19 @@ const routes: Routes = [
   {
     path: "atividades/atividade/:identificador",
     component: AtividadeFormComponent,
+    canActivate: [AuthGuard],
+    canDeactivate: [CanDeactivateGuard],
+  },
+
+  {
+    path: "tipo-atividades",
+    component: TipoAtividadeListComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: "tipo-atividades/atividade/:identificador",
+    component: TipoAtividadeFormComponent,
     canActivate: [AuthGuard],
     canDeactivate: [CanDeactivateGuard],
   },

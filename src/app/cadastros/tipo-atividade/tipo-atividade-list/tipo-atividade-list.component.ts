@@ -9,7 +9,7 @@ import { TipoAtividadeService } from "../tipo-atividade.service";
   templateUrl: "./tipo-atividade-list.component.html",
   styleUrls: ["./tipo-atividade-list.component.css"],
 })
-export class AtividadeListComponent implements OnInit {
+export class TipoAtividadeListComponent implements OnInit {
   data$;
   itemSelecionado;
 
@@ -47,14 +47,14 @@ export class AtividadeListComponent implements OnInit {
     if (!$event) {
       return;
     }
-    this.router.navigate(["atividades/atividade/" + $event.documentId]);
+    this.router.navigate(["tipo-atividades/atividade/" + $event.documentId]);
   }
 
   executarAcao(acaoPropagate) {
     this.itemSelecionado = acaoPropagate.item;
     switch (acaoPropagate.acao) {
       case "add-new":
-        this.router.navigate(["atividades/atividade/0"]);
+        this.router.navigate(["tipo-atividades/atividade/0"]);
         break;
       case "excluir":
         this.excluirItem();

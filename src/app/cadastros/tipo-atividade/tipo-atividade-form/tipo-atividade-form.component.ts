@@ -10,7 +10,7 @@ import { TipoAtividadeService } from "../tipo-atividade.service";
   templateUrl: "./tipo-atividade-form.component.html",
   styleUrls: ["./tipo-atividade-form.component.css"],
 })
-export class AtividadeFormComponent
+export class TipoAtividadeFormComponent
   extends FormCanDeactivate
   implements OnInit
 {
@@ -48,7 +48,7 @@ export class AtividadeFormComponent
   }
 
   voltar() {
-    this.router.navigate(["atividades"]);
+    this.router.navigate(["tipo-atividades"]);
   }
 
   update() {
