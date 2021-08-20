@@ -6,8 +6,8 @@ import { AtividadeService } from "../atividade.service";
 
 @Component({
   selector: "app-atividade-list",
-  templateUrl: "./atividade-list.component.html",
-  styleUrls: ["./atividade-list.component.css"],
+  templateUrl: "./tipo-atividade-list.component.html",
+  styleUrls: ["./tipo-atividade-list.component.css"],
 })
 export class AtividadeListComponent implements OnInit {
   data$;

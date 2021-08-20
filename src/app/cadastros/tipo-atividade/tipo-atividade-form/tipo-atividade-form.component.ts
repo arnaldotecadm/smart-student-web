@@ -7,8 +7,8 @@ import { AtividadeService } from "../atividade.service";
 
 @Component({
   selector: "app-atividade-form",
-  templateUrl: "./atividade-form.component.html",
-  styleUrls: ["./atividade-form.component.css"],
+  templateUrl: "./tipo-atividade-form.component.html",
+  styleUrls: ["./tipo-atividade-form.component.css"],
 })
 export class AtividadeFormComponent
   extends FormCanDeactivate

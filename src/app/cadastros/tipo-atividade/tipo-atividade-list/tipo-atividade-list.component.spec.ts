@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AtividadeListComponent } from './atividade-list.component';
+import { AtividadeListComponent } from "./tipo-atividade-list.component";
 
-describe('AtividadeListComponent', () => {
+describe("AtividadeListComponent", () => {
   let component: AtividadeListComponent;
   let fixture: ComponentFixture<AtividadeListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AtividadeListComponent ]
-    })
-    .compileComponents();
+      declarations: [AtividadeListComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('AtividadeListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
