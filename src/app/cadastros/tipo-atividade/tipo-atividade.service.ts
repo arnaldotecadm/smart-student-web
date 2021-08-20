@@ -8,22 +8,22 @@ const API = environment.ApiUrl;
 @Injectable({
   providedIn: "root",
 })
-export class AtividadeService {
+export class TipoAtividadeService {
   constructor(private http: HttpClient) {}
 
   getAll() {
-    return this.http.get<any[]>(API + "/atividade");
+    return this.http.get<any[]>(API + "/tipo-atividade");
   }
 
   getById(id: string) {
-    return this.http.get<any[]>(API + "/atividade/" + id);
+    return this.http.get<any[]>(API + "/tipo-atividade/" + id);
   }
 
   salvarRegistro(formData: FormData) {
-    return this.http.post<any>(API + "/atividade", formData);
+    return this.http.post<any>(API + "/tipo-atividade", formData);
   }
 
   deleteById(id: string) {
-    return this.http.delete<any[]>(API + "/atividade/" + id);
+    return this.http.delete<any[]>(API + "/tipo-atividade/" + id);
   }
 }

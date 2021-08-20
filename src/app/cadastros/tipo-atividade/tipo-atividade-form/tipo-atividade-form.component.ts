@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormCanDeactivate } from "app/guards/form-can-deactivate.component";
 import { Observable } from "rxjs";
-import { AtividadeService } from "../atividade.service";
+import { TipoAtividadeService } from "../tipo-atividade.service";
 
 @Component({
   selector: "app-atividade-form",
@@ -21,7 +21,7 @@ export class AtividadeFormComponent
   formulario: FormGroup;
 
   constructor(
-    private service: AtividadeService,
+    private service: TipoAtividadeService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router

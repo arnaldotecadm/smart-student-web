@@ -5,7 +5,7 @@ import { AlunoListComponent } from "./aluno/aluno-list/aluno-list.component";
 import { AlunoModule } from "./aluno/aluno.module";
 import { AtividadeFormComponent } from "./tipo-atividade/tipo-atividade-form/tipo-atividade-form.component";
 import { AtividadeListComponent } from "./tipo-atividade/tipo-atividade-list/tipo-atividade-list.component";
-import { AtividadeModule } from "./tipo-atividade/atividade.module";
+import { AtividadeModule } from "./tipo-atividade/tipo-atividade.module";
 import { ConfiguracaoComponent } from "./configuracao/configuracao.component";
 import { ConfiguracaoModule } from "./configuracao/configuracao.module";
 import { MateriaFormComponent } from "./materia/materia-form/materia-form.component";

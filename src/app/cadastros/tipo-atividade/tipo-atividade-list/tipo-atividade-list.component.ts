@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { MustConfirm } from "app/decorators/must-confirm.decorators";
-import { AtividadeService } from "../atividade.service";
+import { TipoAtividadeService } from "../tipo-atividade.service";
 
 @Component({
   selector: "app-atividade-list",
@@ -31,7 +31,7 @@ export class AtividadeListComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private service: AtividadeService,
+    private service: TipoAtividadeService,
     protected dialog: MatDialog
   ) {}
 
