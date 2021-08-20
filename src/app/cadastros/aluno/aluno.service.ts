@@ -19,6 +19,10 @@ export class AlunoService {
     return this.http.get<any[]>(API + "/turma");
   }
 
+  getAlunosPorTurma(turmaId: string) {
+    return this.http.get<any[]>(API + "/aluno/aluno-por-turma/" + turmaId);
+  }
+
   getById(id: string) {
     return this.http.get<any[]>(API + "/aluno/" + id);
   }

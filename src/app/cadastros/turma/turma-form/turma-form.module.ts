@@ -4,6 +4,7 @@ import { TurmaFormComponent } from "./turma-form.component";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { ReactiveFormsModule } from "@angular/forms";
+import { TabelasModule } from "app/shared/tabelas/tabelas.module";
 
 @NgModule({
   declarations: [TurmaFormComponent],
@@ -12,6 +13,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     MatTabsModule,
     MatExpansionModule,
     ReactiveFormsModule,
+    TabelasModule,
   ],
   exports: [TurmaFormComponent],
 })
