@@ -25,6 +25,7 @@ export class AlunoListComponent implements OnInit {
   displayedColumns = [
     { head: "Código", el: "id" },
     { head: "Nome", el: "nome" },
+    { head: "Matrícula", el: "matricula" },
     { head: "Telefone", el: "telefone" },
     { head: "Ações", el: "actions", botoes: this.botoes },
   ];
