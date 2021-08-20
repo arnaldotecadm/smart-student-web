@@ -11,6 +11,9 @@ import { ConfiguracaoModule } from "./configuracao/configuracao.module";
 import { MateriaFormComponent } from "./materia/materia-form/materia-form.component";
 import { MateriaListComponent } from "./materia/materia-list/materia-list.component";
 import { MateriaModule } from "./materia/materia.module";
+import { NotaFormComponent } from "./nota/nota-form/nota-form.component";
+import { NotaListComponent } from "./nota/nota-list/nota-list.component";
+import { NotaModule } from "./nota/nota.module";
 import { NotificacaoComponent } from "./notificacao/notificacao.component";
 import { NotificacaoModule } from "./notificacao/notificacao.module";
 import { ProfessorFormComponent } from "./professor/professor-form/professor-form.component";
@@ -31,6 +34,7 @@ import { TurmaModule } from "./turma/turma.module";
     NotificacaoModule,
     TurmaModule,
     AtividadeModule,
+    NotaModule,
   ],
   exports: [
     AlunoListComponent,
@@ -45,6 +49,8 @@ import { TurmaModule } from "./turma/turma.module";
     TurmaFormComponent,
     AtividadeFormComponent,
     AtividadeListComponent,
+    NotaFormComponent,
+    NotaListComponent,
   ],
 })
 export class CadastrosModule {}
