@@ -4,6 +4,7 @@ import { CanDeactivate } from "@angular/router";
 import { ConfirmDialogComponent } from "app/shared/modals/confirm/confirm.component";
 import { Observable } from "rxjs";
 import { CanDeactivateDirtyComponent } from "./can-deactivate-dirty.componente";
+import { FormCanDeactivate } from "./form-can-deactivate.component";
 
 @Injectable()
 export class CanDeactivateGuard
@@ -13,7 +14,7 @@ export class CanDeactivateGuard
   canDeactivate(
     component: CanDeactivateDirtyComponent
   ): boolean | Observable<boolean> | Promise<boolean> {
-    if (!component.canDeactivate()) {
+    if (component instanceof FormCanDeactivate && !component.canDeactivate()) {
       const dialogRef = this.dialog.open(ConfirmDialogComponent, {
         data: {
           subtitle:
