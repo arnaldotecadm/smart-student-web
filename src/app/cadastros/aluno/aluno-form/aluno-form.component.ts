@@ -71,6 +71,8 @@ export class AlunoFormComponent extends FormCanDeactivate implements OnInit {
       documentId: [],
       id: [{ value: "", disabled: true }],
       nome: ["", Validators.required],
+      matricula: [],
+      cpf: [],
       cep: [],
       tipoCep: [],
       endereco: [],
