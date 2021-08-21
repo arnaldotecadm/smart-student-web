@@ -1,0 +1,44 @@
+<div [fileUploadInputFor]="fileUploadQueue" class="upload-drop-zone">
+  <div class="upload-btn-wrapper" style="width: 800px">
+    <button mat-raised-button class="mr-5">
+      <img class="mr-3" src="./assets/img/ico_escolher_habilitado.svg" />
+      escolher arquivo(s)
+    </button>
+
+    <input
+      id="singleFile"
+      name="myfile"
+      class="btnUpload"
+      type="file"
+      accept="{{ accept }}"
+      multiple
+      [fileUploadInputFor]="fileUploadQueue"
+    />
+
+    <app-mat-file-upload-queue
+      #fileUploadQueue
+      [listaArquivos]="listaArquivos"
+      [httpUrl]="RotaApiSaida"
+      multiple
+    >
+      <div>
+        <div>
+          <div
+            *ngFor="let file of fileUploadQueue.files; let i = index"
+            cdkDrag
+          >
+            <app-mat-file-upload-multi
+              [file]="file"
+              [id]="i"
+              [httpUrl]="RotaApiSaida"
+              [atividadeUUID]="atividadeUUID"
+              (removeEvent)="removeEntry($event)"
+            >
+            </app-mat-file-upload-multi>
+          </div>
+        </div>
+      </div>
+      <p class="checkerror" style="padding-top: 5px"></p>
+    </app-mat-file-upload-queue>
+  </div>
+</div>
