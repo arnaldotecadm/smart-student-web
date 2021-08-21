@@ -1,0 +1,24 @@
+<button
+  mat-raised-button
+  class="mr-5"
+  (click)="uploadAll()"
+  style="width: 184px"
+>
+  <img class="mr-3" src="./assets/img/carregar.svg" />
+  Carregar Todos
+</button>
+
+<button
+  mat-raised-button
+  class="mr-5"
+  (click)="removeAll()"
+  style="width: 184px"
+>
+  <img class="mr-3" src="./assets/img/apagar.svg" />
+  Excluir Todos
+</button>
+
+<div style="margin: 1%" *ngIf="!this.files || this.files.length === 0">
+  <span style="color: black">Não há arquivos para o documento</span>
+</div>
+<ng-content></ng-content>
