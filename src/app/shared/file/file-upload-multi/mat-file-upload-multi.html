@@ -1,0 +1,78 @@
+<mat-card class="col-md-12" class="div-upload">
+  <div>
+    <span
+      style="position: absolute; top: 1px;"
+      *ngIf="progressoNaoIniciada && status != 'Gravado'"
+      class="file-info {{(isUploading) ? 'uploading' : (!gravadoNaBase && !fromDataBase) ? 'not_uploaded' : 'uploaded'}}"
+      [class.erro]="ErroUpload"
+      >{{status}}
+      <span style="position: relative;">
+        <img *ngIf="gravadoNaBase" src="./assets/img/path.png" />
+      </span>
+    </span>
+  </div>
+
+  <section class="example-section">
+    <div class="fileOrdem">
+      <span>{{ file.ordem }}</span>
+    </div>
+
+    <div class="col-md-8">
+      <div
+        *ngIf="status != 'Gravado'"
+        class="{{!gravadoNaBase && !fromDataBase ? ErroUpload? 'progress_error' :'progress_not_uploaded' : 'progress_uploaded'}}"
+      >
+        <mat-progress-bar [value]="progressPercentage"></mat-progress-bar>
+      </div>
+    </div>
+
+    <!-- Icone de Informacoes => mostra habilitado ou desabilitado-->
+    <div class="col-md-1">
+      <div *ngIf="status != 'Gravado'; else iconeInfoHabilitado ">
+        <img class="mr-3" src="./assets/img/info-desabilitado.svg" />
+      </div>
+      <ng-template #iconeInfoHabilitado>
+        <img class="mr-3" src="./assets/img/info-habilitado.svg" />
+      </ng-template>
+    </div>
+
+    <!-- Carregar/Descarregar arquivo -->
+    <div class="col-md-1">
+      <div
+        *ngIf="!ErroUpload && !gravadoNaBase && !fromDataBase && !isUploading; else iconeUploadDesabilitado"
+      >
+        <a [ngClass]="{'disabled' : isUploading}">
+          <mat-icon class="pointer" (click)="upload()">
+            <img class="mr-3" src="./assets/img/carregar.svg" />
+          </mat-icon>
+        </a>
+      </div>
+      <ng-template #iconeUploadDesabilitado>
+        <div *ngIf="!gravadoNaBase || ErroUpload; else iconeDownload">
+          <img class="mr-3" src="./assets/img/carregar-d.svg" />
+        </div>
+      </ng-template>
+
+      <ng-template #iconeDownload>
+        <mat-icon class="pointer" (click)="download(file.id, file.name)">
+          <img class="mr-3" src="./assets/img/download-habilitado.svg" />
+        </mat-icon>
+      </ng-template>
+    </div>
+
+    <!-- Deletar Arquivo -->
+    <div class="col-md-1">
+      <mat-icon class="pointer" (click)="remove()">
+        <img class="mr-3" src="./assets/img/apagar.svg" />
+      </mat-icon>
+    </div>
+  </section>
+  <span
+    [ngClass]="status === 'Gravado' ? 'nomeArquivoVizualizar' : 'NomeArquivo'"
+  >
+    {{getNomeArquivoOriginal(file.name)}}
+  </span>
+</mat-card>
+<span *ngIf="ErroUpload" style="color: red; font-size: 11px;"
+  >{{SaidaErroMensagem}}
+</span>
