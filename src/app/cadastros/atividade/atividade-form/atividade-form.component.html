@@ -76,31 +76,67 @@
                         </div>
                         <div class="row">
                           <div class="col-md-4">
-                            <div class="form-group">
+                            <div
+                              class="form-group"
+                              *ngIf="todasTurmas$ | async as turmas"
+                            >
                               <label>Turma</label>
-                              <select class="custom-select" matNativeControl>
+                              <select
+                                class="custom-select"
+                                matNativeControl
+                                formControlName="turma"
+                              >
                                 <option>Selecione um Registro</option>
-                                <option>Atividade</option>
+                                <option
+                                  *ngFor="let turma of turmas"
+                                  [value]="turma.documentId"
+                                >
+                                  {{ turma.nome }}
+                                </option>
                               </select>
                             </div>
                           </div>
 
                           <div class="col-md-4">
-                            <div class="form-group">
+                            <div
+                              class="form-group"
+                              *ngIf="todasMaterias$ | async as materias"
+                            >
                               <label>Materia</label>
-                              <select class="custom-select" matNativeControl>
+                              <select
+                                class="custom-select"
+                                matNativeControl
+                                formControlName="materia"
+                              >
                                 <option>Selecione um Registro</option>
-                                <option>Materia</option>
+                                <option
+                                  *ngFor="let materia of materias"
+                                  [value]="materia.documentId"
+                                >
+                                  {{ materia.nome }}
+                                </option>
                               </select>
                             </div>
                           </div>
 
                           <div class="col-md-4">
-                            <div class="form-group">
+                            <div
+                              class="form-group"
+                              *ngIf="todosProfessores$ | async as professores"
+                            >
                               <label>Professor</label>
-                              <select class="custom-select" matNativeControl>
+                              <select
+                                class="custom-select"
+                                matNativeControl
+                                formControlName="professor"
+                              >
                                 <option>Selecione um Registro</option>
-                                <option>Professor</option>
+                                <option
+                                  *ngFor="let professor of professores"
+                                  [value]="professor.documentId"
+                                >
+                                  {{ professor.nome }}
+                                </option>
                               </select>
                             </div>
                           </div>
@@ -108,11 +144,25 @@
 
                         <div class="row">
                           <div class="col-md-12">
-                            <div class="form-group">
-                              <label>Atividade</label>
-                              <select class="custom-select" matNativeControl>
+                            <div
+                              class="form-group"
+                              *ngIf="
+                                todosTipoAtividade$ | async as tiposAtividade
+                              "
+                            >
+                              <label>Tipo de Atividade</label>
+                              <select
+                                class="custom-select"
+                                matNativeControl
+                                formControlName="tipoAtividade"
+                              >
                                 <option>Selecione um Registro</option>
-                                <option>Atividade</option>
+                                <option
+                                  *ngFor="let tipoAtividade of tiposAtividade"
+                                  [value]="tipoAtividade.documentId"
+                                >
+                                  {{ tipoAtividade.nome }}
+                                </option>
                               </select>
                             </div>
                           </div>
