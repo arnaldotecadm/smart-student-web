@@ -5,6 +5,7 @@ import { MateriaService } from "app/cadastros/materia/materia.service";
 import { ProfessorService } from "app/cadastros/professor/professor.service";
 import { TipoAtividadeService } from "app/cadastros/tipo-atividade/tipo-atividade.service";
 import { TurmaService } from "app/cadastros/turma/turma.service";
+import { ConfirmationMessageAfterOperation } from "app/decorators/confirmimation-message-after-operation.decorators";
 import { FormCanDeactivate } from "app/guards/form-can-deactivate.component";
 import { Observable } from "rxjs";
 import { AtividadeService } from "../atividade.service";
@@ -70,6 +71,7 @@ export class AtividadeFormComponent
     this.router.navigate(["atividades"]);
   }
 
+  @ConfirmationMessageAfterOperation()
   update() {
     Object.keys(this.formulario.controls).forEach((field) => {
       const control = this.formulario.get(field);
@@ -82,7 +84,9 @@ export class AtividadeFormComponent
     this.service
       .salvarRegistro(this.formulario.getRawValue())
       .subscribe((resposta: any) => {
-        this.ngForm.resetForm();
+        // carregar os dados mais atuais, se necessario
+        this.form.resetForm();
+        this.formulario.patchValue(resposta);
       });
   }
 
@@ -96,6 +100,7 @@ export class AtividadeFormComponent
       materia: [],
       professor: [],
       tipoAtividade: [],
+      notaMaxima: [],
     });
   }
 }

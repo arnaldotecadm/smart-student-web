@@ -9,19 +9,20 @@ import { ConfirmDialogInterface } from "./confirm.interface";
   styleUrls: ["./confirm.component.css"],
 })
 export class ConfirmDialogComponent {
-  caption = "ATENÇÃO";
+  title = "ATENÇÃO";
   subtitle = "Deseja realmente excluir o registro selecionado?";
   btnCancelLabel = "Cancelar";
   btnOkLabel = "Confirmar";
+  showCancelButton = true;
 
   constructor(
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private data: ConfirmDialogInterface
   ) {
     dialogRef.disableClose = true;
-
-    if (data.caption) {
-      this.caption = data.caption;
+    debugger;
+    if (data.title) {
+      this.title = data.title;
     }
 
     if (data.subtitle) {
@@ -34,6 +35,10 @@ export class ConfirmDialogComponent {
 
     if (data.btnOkLabel) {
       this.btnOkLabel = data.btnOkLabel;
+    }
+
+    if (!!!data.showCancelButton) {
+      this.showCancelButton = false;
     }
   }
 

@@ -49,7 +49,7 @@
                             </div>
                           </div>
 
-                          <div class="col-md-11">
+                          <div class="col-md-6">
                             <div class="form-group">
                               <label>Nome da Atividade</label>
                               <input
@@ -59,21 +59,42 @@
                               />
                             </div>
                           </div>
-                        </div>
 
-                        <div class="row">
-                          <div class="col-md-12">
+                          <div class="col-md-3">
+                            <div
+                              class="form-group"
+                              *ngIf="
+                                todosTipoAtividade$ | async as tiposAtividade
+                              "
+                            >
+                              <label>Tipo de Atividade</label>
+                              <select
+                                class="custom-select"
+                                matNativeControl
+                                formControlName="tipoAtividade"
+                              >
+                                <option>Selecione um Registro</option>
+                                <option
+                                  *ngFor="let tipoAtividade of tiposAtividade"
+                                  [value]="tipoAtividade.documentId"
+                                >
+                                  {{ tipoAtividade.nome }}
+                                </option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
                             <div class="form-group">
-                              <label>Descrição</label>
-                              <textarea
+                              <label>Nota Máxima</label>
+                              <input
                                 class="form-control"
-                                matInput
-                                placeholder="Aqui voce pode descriver um pouco essa atividade"
-                                formControlName="descricao"
-                              ></textarea>
+                                formControlName="notaMaxima"
+                              />
                             </div>
                           </div>
                         </div>
+
                         <div class="row">
                           <div class="col-md-4">
                             <div
@@ -144,26 +165,14 @@
 
                         <div class="row">
                           <div class="col-md-12">
-                            <div
-                              class="form-group"
-                              *ngIf="
-                                todosTipoAtividade$ | async as tiposAtividade
-                              "
-                            >
-                              <label>Tipo de Atividade</label>
-                              <select
-                                class="custom-select"
-                                matNativeControl
-                                formControlName="tipoAtividade"
-                              >
-                                <option>Selecione um Registro</option>
-                                <option
-                                  *ngFor="let tipoAtividade of tiposAtividade"
-                                  [value]="tipoAtividade.documentId"
-                                >
-                                  {{ tipoAtividade.nome }}
-                                </option>
-                              </select>
+                            <div class="form-group">
+                              <label>Descrição</label>
+                              <textarea
+                                class="form-control"
+                                matInput
+                                placeholder="Aqui voce pode descriver um pouco essa atividade"
+                                formControlName="descricao"
+                              ></textarea>
                             </div>
                           </div>
                         </div>
