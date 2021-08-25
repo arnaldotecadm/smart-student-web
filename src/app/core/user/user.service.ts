@@ -39,6 +39,7 @@ export class UserService {
 
   logout() {
     this.tokenService.removeToken();
+    localStorage.removeItem("isNewUser");
     this.userSubject.next(null);
     this.firebaseAuth.signOut();
 

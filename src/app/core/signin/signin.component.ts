@@ -4,9 +4,9 @@ import { Router } from "@angular/router";
 import * as firebase from "firebase/app";
 import "firebaseui/dist/firebaseui.css";
 import { AuthService } from "../auth/auth.service";
+import { TokenService } from "../token/token.service";
 import { UserService } from "../user/user.service";
 import firebaseui = require("firebaseui");
-import { TokenService } from "../token/token.service";
 
 @Component({
   templateUrl: "./signin.component.html",
@@ -70,6 +70,10 @@ export class SigninComponent implements OnInit {
 
   goHome(authResult): boolean {
     authResult.user.getIdToken().then((token) => {
+      localStorage.setItem(
+        "isNewUser",
+        authResult.additionalUserInfo.isNewUser
+      );
       this.tokenService.setToken(token);
     });
     this.ngZone.run(() => {
@@ -83,33 +87,5 @@ export class SigninComponent implements OnInit {
     const password = this.loginForm.get("password").value;
 
     this.authService.authenticate(userName, password);
-
-    /*this.authService.authenticate(userName, password).subscribe(
-      () => this.router.navigate(["/excecoes"]),
-      (err) => {
-        switch (err.status) {
-          case 0:
-            this.msgService.showError(
-              "Ocorreu um erro ao tentar acessar o servidor de Autentições. Tente novamente mais tarde.",
-              "Falha na conexão"
-            );
-            break;
-          case 401:
-            this.msgService.showError(
-              "Usuário ou Senha incorretas.Por favor verifique as informações e tente novamente.",
-              "Acesso não permitido!"
-            );
-            this.loginForm.get("username").setErrors({ userName: true });
-            this.loginForm.get("password").setErrors({ password: true });
-            break;
-          default:
-            this.msgService.showError(
-              "Ocorreu um erro desconhecido, mas não se preocupe;  Já estamos trabalhando para resolver o problema.",
-              "Atenção"
-            );
-            break;
-        }
-      }
-    );*/
   }
 }

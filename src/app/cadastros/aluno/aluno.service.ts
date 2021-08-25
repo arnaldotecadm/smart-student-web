@@ -27,7 +27,7 @@ export class AlunoService {
     return this.http.get<any[]>(API + "/aluno/" + id);
   }
 
-  salvarRegistro(formData: FormData) {
+  salvarRegistro(formData) {
     return this.http.post<any>(API + "/aluno", formData);
   }
 

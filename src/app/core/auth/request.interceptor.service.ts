@@ -39,7 +39,6 @@ export class RequestInterceptor implements HttpInterceptor {
       req = req.clone({
         setHeaders: {
           Authorization: "Bearer " + token,
-          "access-control-allow-origin": "http://localhost:8080/",
         },
       });
     }
