@@ -92,3 +92,7 @@ body {
 .DONE {
   background-color: rgb(117, 158, 202);
 }
+
+.DELETED {
+  background-color: rgba(204, 119, 119, 0.95);
+}

@@ -92,10 +92,18 @@ export class FeatureListComponent implements OnInit {
         this.markAsDone();
         break;
       case "excluir":
+        this.markAsAbondoned();
         break;
       case "markInProgress":
         this.markInProgress();
     }
+  }
+
+  @MustConfirm("Deseja mesmo abandonar esta tarefa?")
+  markAsAbondoned() {
+    this.service.deleteById(this.itemSelecionado.documentId).subscribe(() => {
+      this.carregarDados();
+    });
   }
 
   @MustConfirm("Deseja mesmo iniciar esta tarefa?")
