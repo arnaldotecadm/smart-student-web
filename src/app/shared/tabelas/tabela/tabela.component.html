@@ -85,11 +85,14 @@
                     <tr
                       mat-row
                       *matRowDef="let row; columns: cols"
-                      class="linha-coluna"
+                      [ngClass]="
+                        'linha-coluna ' + row[this.displayedColumns[0].clazz]
+                      "
                       [class.highlight]="
                         showSelect &&
                         selectedRowIndex == row[this.displayedColumns[0].el]
                       "
+                      [class.skip]="row[this.displayedColumns[0].clazz]"
                       (click)="highlight(row)"
                     ></tr>
                   </table>

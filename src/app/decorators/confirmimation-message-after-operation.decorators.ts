@@ -14,7 +14,6 @@ export function ConfirmationMessageAfterOperation(
 
       const matDialogService = ServiceLocator.injector.get(MatDialog);
 
-      debugger;
       result = originalMethod.apply(this, args);
 
       matDialogService.open(ConfirmDialogComponent, {

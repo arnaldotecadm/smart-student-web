@@ -1,15 +1,20 @@
+import { MatDialog } from "@angular/material/dialog";
+import { ServiceLocator } from "app/services/service.locator";
 import { ConfirmDialogComponent } from "app/shared/modals/confirm/confirm.component";
 
-export function MustConfirm(subTitle: string): MethodDecorator {
+export function MustConfirm(subtitle: string): MethodDecorator {
   return function (target: Function, key: string, descriptor: any) {
     const originalMethod = descriptor.value;
 
     descriptor.value = function (...args: any[]) {
       let result;
 
-      this.dialog.open(ConfirmDialogComponent, {
+      const matDialogService = ServiceLocator.injector.get(MatDialog);
+
+      matDialogService.open(ConfirmDialogComponent, {
         data: {
-          subTitle,
+          subtitle,
+          showCancelButton: true,
           fnOk: () => {
             result = originalMethod.apply(this, args);
           },

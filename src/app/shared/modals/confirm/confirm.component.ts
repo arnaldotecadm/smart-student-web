@@ -20,7 +20,7 @@ export class ConfirmDialogComponent {
     @Inject(MAT_DIALOG_DATA) private data: ConfirmDialogInterface
   ) {
     dialogRef.disableClose = true;
-    debugger;
+
     if (data.title) {
       this.title = data.title;
     }

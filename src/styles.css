@@ -84,3 +84,11 @@ body {
 .pointer {
   cursor: pointer;
 }
+
+.IN_PROGRESS {
+  background-color: rgb(159, 208, 159);
+}
+
+.DONE {
+  background-color: rgb(117, 158, 202);
+}

@@ -1,11 +1,11 @@
 tr {
   cursor: pointer;
 }
-tr.linha-coluna:not(.example-expanded-row):hover {
+tr.linha-coluna:not(.skip):hover {
   background: whitesmoke;
 }
 
-tr.linha-coluna:not(.example-expanded-row):active {
+tr.linha-coluna:not(.skip):active {
   background: #efefef;
 }
 

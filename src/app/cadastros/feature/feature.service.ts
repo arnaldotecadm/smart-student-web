@@ -25,4 +25,12 @@ export class FeatureService {
   deleteById(id: string) {
     return this.http.delete<any[]>(API + "/feature/" + id);
   }
+
+  markInProgress(id: string) {
+    return this.http.post<any[]>(API + "/feature/mark-in-progress/" + id, null);
+  }
+
+  markAsDone(id: string) {
+    return this.http.post<any[]>(API + "/feature/mark-as-done/" + id, null);
+  }
 }

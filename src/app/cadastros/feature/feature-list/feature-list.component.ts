@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { MustConfirm } from "app/decorators/must-confirm.decorators";
 import { Observable } from "rxjs";
 import { FeatureService } from "../feature.service";
 
@@ -16,6 +17,7 @@ export class FeatureListComponent implements OnInit {
   obj$: Observable<any>;
   formulario: FormGroup;
   itemSelecionado;
+  pageSizeOptions = [20, 30, 40, 50];
 
   featureList$: Observable<any>;
 
@@ -24,12 +26,24 @@ export class FeatureListComponent implements OnInit {
       nome: "excluir",
       acao: "excluir",
       icone: "apagar.svg",
-      title: "Excluir Turma",
+      title: "Excluir Feature",
+    },
+    {
+      nome: "fazendo",
+      acao: "markInProgress",
+      icone: "fazendo.svg",
+      title: "Desenvolvendo Feature",
+    },
+    {
+      nome: "resolver",
+      acao: "markAsDone",
+      icone: "icons-ok.svg",
+      title: "Concluir Feature",
     },
   ];
 
   displayedColumns = [
-    { head: "Código", el: "id" },
+    { head: "Código", el: "id", clazz: "featureStatusEnum" },
     { head: "Nome", el: "nome" },
     { head: "Descrição", el: "descricao" },
     { head: "Ações", el: "actions", botoes: this.botoes },
@@ -74,10 +88,30 @@ export class FeatureListComponent implements OnInit {
   executarAcao(acaoPropagate) {
     this.itemSelecionado = acaoPropagate.item;
     switch (acaoPropagate.acao) {
-      case "add-new":
+      case "markAsDone":
+        this.markAsDone();
         break;
       case "excluir":
+        break;
+      case "markInProgress":
+        this.markInProgress();
     }
+  }
+
+  @MustConfirm("Deseja mesmo iniciar esta tarefa?")
+  markInProgress() {
+    this.service
+      .markInProgress(this.itemSelecionado.documentId)
+      .subscribe(() => {
+        this.carregarDados();
+      });
+  }
+
+  @MustConfirm("Deseja mesmo marcar esta tarefa como concluida?")
+  markAsDone() {
+    this.service.markAsDone(this.itemSelecionado.documentId).subscribe(() => {
+      this.carregarDados();
+    });
   }
 
   private construirFormulario() {
