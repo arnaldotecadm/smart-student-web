@@ -72,4 +72,11 @@ export class TabelaComponent implements OnInit, AfterContentInit {
     event.stopImmediatePropagation();
     this.acaoSelecionada.emit({ acao, item });
   }
+
+  evaluateExpression(element, expression) {
+    if (!expression) {
+      return;
+    }
+    return eval(expression);
+  }
 }

@@ -96,3 +96,7 @@ body {
 .DELETED {
   background-color: rgba(204, 119, 119, 0.95);
 }
+
+.disabled-control {
+  cursor: no-drop;
+}

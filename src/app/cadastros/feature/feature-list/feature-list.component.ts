@@ -27,18 +27,22 @@ export class FeatureListComponent implements OnInit {
       acao: "excluir",
       icone: "apagar.svg",
       title: "Excluir Feature",
+      expression: "element['featureStatusEnum'] != 'DONE'",
     },
     {
       nome: "fazendo",
       acao: "markInProgress",
       icone: "fazendo.svg",
       title: "Desenvolvendo Feature",
+      expression:
+        "element['featureStatusEnum'] == 'CREATED' || element['featureStatusEnum'] == null",
     },
     {
       nome: "resolver",
       acao: "markAsDone",
       icone: "icons-ok.svg",
       title: "Concluir Feature",
+      expression: "element['featureStatusEnum'] == 'IN_PROGRESS'",
     },
   ];
 

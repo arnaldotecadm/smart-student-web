@@ -71,6 +71,11 @@
                             [title]="acao.title"
                             width="25px"
                             style="margin-left: 3%"
+                            [style.display]="
+                              evaluateExpression(element, acao.expression)
+                                ? ''
+                                : 'none'
+                            "
                           />
                         </ng-template>
                       </td>
