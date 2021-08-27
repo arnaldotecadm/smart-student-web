@@ -17,7 +17,7 @@ export class FeatureListComponent implements OnInit {
   obj$: Observable<any>;
   formulario: FormGroup;
   itemSelecionado;
-  pageSizeOptions = [20, 30, 40, 50];
+  pageSizeOptions = [50, 75, 100];
 
   featureList$: Observable<any>;
 
