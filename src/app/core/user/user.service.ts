@@ -1,3 +1,4 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from "@angular/router";
@@ -5,6 +6,8 @@ import * as jwt_decode from "jwt-decode";
 import { BehaviorSubject } from "rxjs";
 import { TokenService } from "../token/token.service";
 import { User } from "./user";
+import { environment } from "../../../environments/environment";
+import { map } from "rxjs/operators";
 
 @Injectable({ providedIn: "root" })
 export class UserService {
@@ -13,7 +16,8 @@ export class UserService {
   constructor(
     private tokenService: TokenService,
     private firebaseAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {
     this.tokenService.hasToken();
     this.decodeAndNotify();
@@ -43,10 +47,50 @@ export class UserService {
     this.userSubject.next(null);
     this.firebaseAuth.signOut();
 
+    this.stopRefreshTokenTimer();
     this.router.navigate(["/sigin-in"]);
   }
 
   public isLogged() {
     return this.tokenService.hasToken();
+  }
+
+  private refreshTokenTimeout;
+
+  public startRefreshTokenTimer(token: string) {
+    this.refreshTokenTimeout = setTimeout(
+      () => this.refreshToken().subscribe(),
+      1 * 1000 * 60 * 10
+    );
+  }
+
+  refreshToken() {
+    const payLoad = {
+      grant_type: "refresh_token",
+      refresh_token: this.tokenService.getRefreshToken(),
+    };
+
+    return this.http
+      .post<any>(
+        `https://securetoken.googleapis.com/v1/token?key=${environment.firebaseConfig.apiKey}`,
+        { payLoad },
+        {
+          headers: {
+            "Access-Control-Allow-Credentials": "true",
+            "Access-Control-Allow-Origin": "*",
+          },
+          withCredentials: true,
+        }
+      )
+      .pipe(
+        map((token) => {
+          this.tokenService.setToken(token.id_token);
+          this.startRefreshTokenTimer(token.id_token);
+        })
+      );
+  }
+
+  private stopRefreshTokenTimer() {
+    clearTimeout(this.refreshTokenTimeout);
   }
 }

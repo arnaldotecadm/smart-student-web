@@ -7,6 +7,7 @@ import { AuthService } from "../auth/auth.service";
 import { TokenService } from "../token/token.service";
 import { UserService } from "../user/user.service";
 import firebaseui = require("firebaseui");
+import { environment } from "environments/environment";
 
 @Component({
   templateUrl: "./signin.component.html",
@@ -70,11 +71,19 @@ export class SigninComponent implements OnInit {
 
   goHome(authResult): boolean {
     authResult.user.getIdToken().then((token) => {
+      if (environment.production) {
+        // para evitar problema de CORS
+        this.userService.startRefreshTokenTimer(token);
+      }
+
       localStorage.setItem(
         "isNewUser",
         authResult.additionalUserInfo.isNewUser
       );
       this.tokenService.setToken(token);
+      this.tokenService.setRefreshToken(
+        authResult.user.toJSON().stsTokenManager.refreshToken
+      );
     });
     this.ngZone.run(() => {
       this.router.navigate(["home"]);
