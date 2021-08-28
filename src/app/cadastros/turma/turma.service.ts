@@ -1,5 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { CalendarioEventInterface } from "app/interfaces/calendar-event.interface";
+import moment = require("moment");
 import { of } from "rxjs";
 import { environment } from "../../../environments/environment";
 
@@ -8,7 +10,7 @@ const API = environment.ApiUrl;
 @Injectable({
   providedIn: "root",
 })
-export class TurmaService {
+export class TurmaService implements CalendarioEventInterface {
   constructor(private http: HttpClient) {}
 
   getAll() {
@@ -25,5 +27,30 @@ export class TurmaService {
 
   deleteById(id: string) {
     return this.http.delete<any[]>(API + "/turma/" + id);
+  }
+
+  getAllCalendarioEvent() {
+    return this.http.get<any[]>(API + "/calendario-turma");
+  }
+
+  getByIdCalendarioEvent(documentId: string) {
+    return this.http.get<any[]>(API + "/calendario-turma/" + documentId);
+  }
+
+  deleteByIdCalendarioEvent(id: string) {
+    return this.http.delete<any[]>(API + "/calendario-turma/" + id);
+  }
+
+  saveCalendarioEvent(data) {
+    const calendarioTurma = {
+      id: data.id,
+      documentId: data.documentId,
+      evento: data.evento,
+      descricao: data.descricao,
+      data: moment(data.data, "DD/MM/YYYY"),
+      turma: data.idRelacionamento,
+    };
+
+    return this.http.post<any[]>(API + "/calendario-turma", calendarioTurma);
   }
 }
