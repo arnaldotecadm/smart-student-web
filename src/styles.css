@@ -1,3 +1,6 @@
+@import "~@fullcalendar/core/main.css";
+@import "~@fullcalendar/daygrid/main.css";
+
 .required:after {
   color: #d00;
   content: "*";
