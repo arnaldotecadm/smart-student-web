@@ -1,0 +1,90 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">
+              {{ formulario.get("id").value ? "Alterar " : "Criar " }}
+              Evento
+            </h4>
+          </div>
+          <div class="content">
+            <form [formGroup]="formulario">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label class="required">Data Agendamento</label>
+                    <input
+                      formControlName="data"
+                      type="text"
+                      class="form-control"
+                      placeholder="Data Agendamento"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="required">Evento</label>
+                    <input
+                      formControlName="evento"
+                      type="text"
+                      class="form-control"
+                      placeholder="Nome Funcionário"
+                      value="Arnaldo Cícero Bezerra"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea
+                      formControlName="descricao"
+                      rows="5"
+                      class="form-control"
+                      placeholder="Deixe aqui uma pequena descrição"
+                      value=""
+                    >
+                    </textarea>
+                  </div>
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-danger btn-fill pull-left col-md-3"
+                (click)="onNoClick()"
+              >
+                Cancelar
+              </button>
+
+              <button
+                type="submit"
+                style="margin-left: 1%"
+                class="btn btn-success btn-fill pull-right col-md-3"
+                (click)="updateEntry()"
+              >
+                Salvar Evento
+              </button>
+
+              <button
+                *ngIf="formulario.get('id').value"
+                type="submit"
+                class="btn btn-danger btn-fill pull-right col-md-3"
+                (click)="removeEntry()"
+              >
+                Remover Evento
+              </button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
