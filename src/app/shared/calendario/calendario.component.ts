@@ -122,11 +122,13 @@ export class CalendarioComponent implements OnInit {
 
   carregarEventos() {
     this.calendar.removeAllEvents();
-    this.service.getAllCalendarioEvent().subscribe((data: any[]) => {
-      data.forEach((item) => {
-        this.addCalendarEvent(item);
+    this.service
+      .getAllCalendarioEvent(this.idRelacionamento)
+      .subscribe((data: any[]) => {
+        data.forEach((item) => {
+          this.addCalendarEvent(item);
+        });
       });
-    });
   }
 
   addCalendarEvent(item) {

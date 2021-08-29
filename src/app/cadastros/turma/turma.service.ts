@@ -1,9 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { CalendarioEventInterface } from "app/interfaces/calendar-event.interface";
-import moment = require("moment");
-import { of } from "rxjs";
 import { environment } from "../../../environments/environment";
+import moment = require("moment");
 
 const API = environment.ApiUrl;
 
@@ -29,8 +28,8 @@ export class TurmaService implements CalendarioEventInterface {
     return this.http.delete<any[]>(API + "/turma/" + id);
   }
 
-  getAllCalendarioEvent() {
-    return this.http.get<any[]>(API + "/calendario-turma");
+  getAllCalendarioEvent(documentId: string) {
+    return this.http.get<any[]>(API + "/calendario-turma/all/" + documentId);
   }
 
   getByIdCalendarioEvent(documentId: string) {

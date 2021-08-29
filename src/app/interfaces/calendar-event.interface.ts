@@ -1,5 +1,5 @@
 export interface CalendarioEventInterface {
-  getAllCalendarioEvent();
+  getAllCalendarioEvent(documentId: string);
 
   getByIdCalendarioEvent(documentId: string);
 

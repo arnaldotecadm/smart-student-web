@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { CalendarioEventInterface } from "app/interfaces/calendar-event.interface";
-import { of } from "rxjs";
 import { environment } from "../../../environments/environment";
+import moment = require("moment");
 
 const API = environment.ApiUrl;
 
@@ -11,19 +11,6 @@ const API = environment.ApiUrl;
 })
 export class ProfessorService implements CalendarioEventInterface {
   constructor(private http: HttpClient) {}
-
-  getAllCalendarioEvent() {
-    return of([]);
-  }
-  getByIdCalendarioEvent(documentId: string) {
-    return of(null);
-  }
-  deleteByIdCalendarioEvent(id: string) {
-    return of(null);
-  }
-  saveCalendarioEvent(data: any) {
-    return of(null);
-  }
 
   getAll() {
     return this.http.get<any[]>(API + "/professor");
@@ -39,5 +26,35 @@ export class ProfessorService implements CalendarioEventInterface {
 
   deleteById(id: string) {
     return this.http.delete<any[]>(API + "/professor/" + id);
+  }
+
+  getAllCalendarioEvent(documentId) {
+    return this.http.get<any[]>(
+      API + "/calendario-professor/all/" + documentId
+    );
+  }
+
+  getByIdCalendarioEvent(documentId: string) {
+    return this.http.get<any[]>(API + "/calendario-professor/" + documentId);
+  }
+
+  deleteByIdCalendarioEvent(id: string) {
+    return this.http.delete<any[]>(API + "/calendario-professor/" + id);
+  }
+
+  saveCalendarioEvent(data) {
+    const calendarioProfessor = {
+      id: data.id,
+      documentId: data.documentId,
+      evento: data.evento,
+      descricao: data.descricao,
+      data: moment(data.data, "DD/MM/YYYY"),
+      professor: data.idRelacionamento,
+    };
+
+    return this.http.post<any[]>(
+      API + "/calendario-professor",
+      calendarioProfessor
+    );
   }
 }
