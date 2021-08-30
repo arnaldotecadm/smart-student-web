@@ -3,6 +3,7 @@
 # compiled output
 /dist
 /tmp
+/public
 
 # dependencies
 /node_modules
@@ -42,3 +43,4 @@ testem.log
 Thumbs.db
 src/environments/environment.prod.ts
 src/environments/environment.ts
+hosting*

@@ -2,12 +2,13 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from "@angular/router";
+import * as firebase from "firebase/app";
 import * as jwt_decode from "jwt-decode";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, of } from "rxjs";
+import { map } from "rxjs/operators";
+import { environment } from "../../../environments/environment";
 import { TokenService } from "../token/token.service";
 import { User } from "./user";
-import { environment } from "../../../environments/environment";
-import { map } from "rxjs/operators";
 
 @Injectable({ providedIn: "root" })
 export class UserService {
@@ -57,37 +58,23 @@ export class UserService {
 
   private refreshTokenTimeout;
 
-  public startRefreshTokenTimer(token: string) {
+  public startRefreshTokenTimer() {
     this.refreshTokenTimeout = setTimeout(
       () => this.refreshToken().subscribe(),
-      1 * 1000 * 60 * 10
+      1 * 1000 * 60 * 10 // 10 minutos
     );
   }
 
   refreshToken() {
-    const payLoad = {
-      grant_type: "refresh_token",
-      refresh_token: this.tokenService.getRefreshToken(),
-    };
+    const user = firebase.default.auth().currentUser;
 
-    return this.http
-      .post<any>(
-        `https://securetoken.googleapis.com/v1/token?key=${environment.firebaseConfig.apiKey}`,
-        { payLoad },
-        {
-          headers: {
-            "Access-Control-Allow-Credentials": "true",
-            "Access-Control-Allow-Origin": "*",
-          },
-          withCredentials: true,
-        }
-      )
-      .pipe(
-        map((token) => {
-          this.tokenService.setToken(token.id_token);
-          this.startRefreshTokenTimer(token.id_token);
-        })
-      );
+    user.getIdToken(true).then((token) => {
+      this.tokenService.setToken(token);
+    });
+
+    this.startRefreshTokenTimer();
+
+    return of("token atualizado com sucesso");
   }
 
   private stopRefreshTokenTimer() {
