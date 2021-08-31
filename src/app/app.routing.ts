@@ -23,6 +23,8 @@ import { CanDeactivateGuard } from "./guards/can-deactivate-guard.service";
 import { HomePageComponent } from "./home/home-page/home-page.component";
 import { AtividadeListComponent } from "./cadastros/atividade/atividade-list/atividade-list.component";
 import { AtividadeFormComponent } from "./cadastros/atividade/atividade-form/atividade-form.component";
+import { UsuarioListComponent } from "./cadastros/usuario/usuario-list/usuario-list.component";
+import { UsuarioFormComponent } from "./cadastros/usuario/usuario-form/usuario-form.component";
 
 const routes: Routes = [
   {
@@ -129,6 +131,19 @@ const routes: Routes = [
   {
     path: "tipo-atividades/atividade/:identificador",
     component: TipoAtividadeFormComponent,
+    canActivate: [AuthGuard],
+    canDeactivate: [CanDeactivateGuard],
+  },
+
+  {
+    path: "usuarios",
+    component: UsuarioListComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: "usuarios/usuario/:identificador",
+    component: UsuarioFormComponent,
     canActivate: [AuthGuard],
     canDeactivate: [CanDeactivateGuard],
   },

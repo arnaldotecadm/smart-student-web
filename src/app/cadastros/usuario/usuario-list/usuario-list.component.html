@@ -1,1 +1,9 @@
-<p>usuario-list works!</p>
+<app-tabela
+  *ngIf="data$ | async as data"
+  [displayedColumns]="displayedColumns"
+  [dados]="data"
+  [headerTitle]="'Lista de Turmas cadastrados no Sistema'"
+  (selectedRow)="onRowSelect($event)"
+  [showAddButtom]="true"
+  (acaoSelecionada)="executarAcao($event)"
+></app-tabela>
