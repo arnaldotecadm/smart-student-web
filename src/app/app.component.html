@@ -29,3 +29,13 @@
     </div>
   </div>
 </div>
+
+<ng-container *ngIf="loadingService.isLoading$ | async">
+  <div class="loading-icon">
+    <img
+      [src]="'/assets/img/loading-buffering.gif'"
+      alt="Loading Icon"
+      class="img-centered"
+    />
+  </div>
+</ng-container>

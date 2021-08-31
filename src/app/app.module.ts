@@ -19,6 +19,8 @@ import { RequestInterceptor } from "./core/auth/request.interceptor.service";
 import { CoreModule } from "./core/core.module";
 import { DashboardModule } from "./dashboard/dashboard.module";
 import { HomeModule } from "./home/home.module";
+import { LoadingInterceptor } from "./interceptors/LoadingInterceptor";
+import { LoadingService } from "./services/loading-service";
 import { ServiceLocator } from "./services/service.locator";
 import { FooterModule } from "./shared/footer/footer.module";
 
@@ -51,11 +53,13 @@ import { FooterModule } from "./shared/footer/footer.module";
   providers: [
     DecimalPipe,
     CurrencyPipe,
+    LoadingService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptor,
       multi: true,
     },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

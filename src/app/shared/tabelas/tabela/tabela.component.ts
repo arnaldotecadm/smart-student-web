@@ -75,7 +75,7 @@ export class TabelaComponent implements OnInit, AfterContentInit {
 
   evaluateExpression(element, expression) {
     if (!expression) {
-      return;
+      return true;
     }
     return eval(expression);
   }
