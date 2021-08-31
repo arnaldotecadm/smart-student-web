@@ -30,4 +30,16 @@ export class UsuarioService {
   createNewUsuario(token: string) {
     return this.http.post(API + "/usuario/create-user-from-token", token);
   }
+
+  getAllAprovados() {
+    return this.http.get<any[]>(API + "/usuario/aprovados");
+  }
+
+  getAllReprovados() {
+    return this.http.get<any[]>(API + "/usuario/reprovados");
+  }
+
+  getAllPendentes() {
+    return this.http.get<any[]>(API + "/usuario/pendentes");
+  }
 }

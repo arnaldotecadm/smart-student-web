@@ -63,20 +63,33 @@
                           {{ element[col.el] | pipeFormacaoColuna: col.format }}
                         </div>
                         <ng-template #icones>
-                          <img
-                            *ngFor="let acao of col.botoes"
-                            (click)="propagate(acao.acao, element)"
-                            [src]="'/assets/img/' + acao.icone"
-                            [alt]="acao.title"
-                            [title]="acao.title"
-                            width="25px"
-                            style="margin-left: 3%"
-                            [style.display]="
-                              evaluateExpression(element, acao.expression)
-                                ? ''
-                                : 'none'
-                            "
-                          />
+                          <div *ngIf="!col.tipo || col.tipo != 'botao'">
+                            <img
+                              *ngFor="let acao of col.botoes"
+                              (click)="propagate(acao.acao, element)"
+                              [src]="'/assets/img/' + acao.icone"
+                              [alt]="acao.title"
+                              [title]="acao.title"
+                              width="25px"
+                              style="margin-left: 3%"
+                              [style.display]="
+                                evaluateExpression(element, acao.expression)
+                                  ? ''
+                                  : 'none'
+                              "
+                            />
+                          </div>
+                          <div *ngIf="col.tipo && col.tipo == 'botao'">
+                            <button
+                              *ngFor="let acao of col.botoes"
+                              mat-button
+                              [ngClass]="'btn btn-fill ' + acao.classe"
+                              style="margin-right: 1%"
+                              (click)="propagate(acao.acao, element)"
+                            >
+                              {{ acao.titulo }}
+                            </button>
+                          </div>
                         </ng-template>
                       </td>
                     </ng-container>

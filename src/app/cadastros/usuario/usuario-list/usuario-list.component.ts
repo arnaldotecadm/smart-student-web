@@ -10,7 +10,9 @@ import { UsuarioService } from "../usuario.service";
   styleUrls: ["./usuario-list.component.css"],
 })
 export class UsuarioListComponent implements OnInit {
-  data$;
+  dataAprovados$;
+  dataPendentes$;
+  dataReprovados$;
   itemSelecionado;
 
   botoes = [
@@ -22,11 +24,63 @@ export class UsuarioListComponent implements OnInit {
     },
   ];
 
+  botoesAprovacao = [
+    {
+      nome: "aprovar",
+      acao: "aprovar",
+      classe: "btn-success",
+      titulo: "Aprovar",
+    },
+    {
+      nome: "reprovar",
+      acao: "reprovar",
+      classe: "btn-danger",
+      titulo: "Reprovar",
+    },
+  ];
+
+  botaoAprovar = [
+    {
+      nome: "aprovar",
+      acao: "aprovar",
+      classe: "btn-success",
+      titulo: "Aprovar",
+    },
+  ];
+
   displayedColumns = [
     { head: "Código", el: "id" },
     { head: "Nome", el: "nome" },
     { head: "Email", el: "email" },
-    { head: "Ações", el: "actions", botoes: this.botoes },
+    {
+      head: "Ações",
+      el: "actions",
+      botoes: this.botoes,
+    },
+  ];
+
+  displayedColumnsAprovacao = [
+    { head: "Código", el: "id" },
+    { head: "Nome", el: "nome" },
+    { head: "Email", el: "email" },
+    {
+      head: "Ações",
+      el: "actions",
+      botoes: this.botoesAprovacao,
+      tipo: "botao",
+    },
+  ];
+
+  displayedColumnsReprovados = [
+    { head: "Código", el: "id" },
+    { head: "Nome", el: "nome" },
+    { head: "Email", el: "email" },
+    {
+      head: "Ações",
+      el: "actions",
+      botoes: this.botaoAprovar,
+      tipo: "botao",
+    },
   ];
 
   constructor(
@@ -40,7 +94,9 @@ export class UsuarioListComponent implements OnInit {
   }
 
   loadData() {
-    this.data$ = this.service.getAll();
+    this.dataAprovados$ = this.service.getAllAprovados();
+    this.dataPendentes$ = this.service.getAllPendentes();
+    this.dataReprovados$ = this.service.getAllReprovados();
   }
 
   onRowSelect($event) {
@@ -52,13 +108,15 @@ export class UsuarioListComponent implements OnInit {
 
   executarAcao(acaoPropagate) {
     this.itemSelecionado = acaoPropagate.item;
-    switch (acaoPropagate.acao) {
+    console.log(acaoPropagate);
+
+    /*switch (acaoPropagate.acao) {
       case "add-new":
         this.router.navigate(["usuarios/usuario/0"]);
         break;
       case "excluir":
         this.excluirItem();
-    }
+    }*/
   }
 
   @MustConfirm("Deseja realemnte excluir este registro?")

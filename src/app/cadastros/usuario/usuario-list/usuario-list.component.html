@@ -1,9 +1,54 @@
-<app-tabela
-  *ngIf="data$ | async as data"
-  [displayedColumns]="displayedColumns"
-  [dados]="data"
-  [headerTitle]="'Lista de Turmas cadastrados no Sistema'"
-  (selectedRow)="onRowSelect($event)"
-  [showAddButtom]="true"
-  (acaoSelecionada)="executarAcao($event)"
-></app-tabela>
+<div class="main-content mt-3">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-tab-group animationDuration="0ms" [selectedIndex]="1">
+          <mat-tab label="Lista de Usuarios Aprovados">
+            <ng-template matTabContent>
+              <app-tabela
+                *ngIf="dataAprovados$ | async as data"
+                [displayedColumns]="displayedColumns"
+                [dados]="data"
+                [headerTitle]="'Lista de usuários cadastrados no Sistema'"
+                (selectedRow)="onRowSelect($event)"
+                [showAddButtom]="true"
+                (acaoSelecionada)="executarAcao($event)"
+              >
+              </app-tabela>
+            </ng-template>
+          </mat-tab>
+
+          <mat-tab label="Lista de Usuarios Aguardando Aprovação">
+            <ng-template matTabContent>
+              <app-tabela
+                *ngIf="dataPendentes$ | async as data"
+                [displayedColumns]="displayedColumnsAprovacao"
+                [dados]="data"
+                [headerTitle]="'Lista de usuários cadastrados no Sistema'"
+                (selectedRow)="onRowSelect($event)"
+                [showAddButtom]="true"
+                (acaoSelecionada)="executarAcao($event)"
+              >
+              </app-tabela>
+            </ng-template>
+          </mat-tab>
+
+          <mat-tab label="Lista de Usuarios Reprovados">
+            <ng-template matTabContent>
+              <app-tabela
+                *ngIf="dataReprovados$ | async as data"
+                [displayedColumns]="displayedColumnsReprovados"
+                [dados]="data"
+                [headerTitle]="'Lista de usuários cadastrados no Sistema'"
+                (selectedRow)="onRowSelect($event)"
+                [showAddButtom]="true"
+                (acaoSelecionada)="executarAcao($event)"
+              >
+              </app-tabela>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>
