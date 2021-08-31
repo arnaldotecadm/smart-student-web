@@ -25,6 +25,9 @@ import { TipoAtividadeModule } from "./tipo-atividade/tipo-atividade.module";
 import { TurmaFormComponent } from "./turma/turma-form/turma-form.component";
 import { TurmaListComponent } from "./turma/turma-list/turma-list.component";
 import { TurmaModule } from "./turma/turma.module";
+import { UsuarioFormComponent } from "./usuario/usuario-form/usuario-form.component";
+import { UsuarioListComponent } from "./usuario/usuario-list/usuario-list.component";
+import { UsuarioModule } from "./usuario/usuario.module";
 
 @NgModule({
   declarations: [],
@@ -39,6 +42,7 @@ import { TurmaModule } from "./turma/turma.module";
     AtividadeModule,
     TipoAtividadeModule,
     NotaModule,
+    UsuarioModule,
   ],
   exports: [
     AlunoListComponent,
@@ -57,6 +61,8 @@ import { TurmaModule } from "./turma/turma.module";
     TipoAtividadeListComponent,
     NotaFormComponent,
     NotaListComponent,
+    UsuarioFormComponent,
+    UsuarioListComponent,
   ],
 })
 export class CadastrosModule {}
