@@ -42,4 +42,12 @@ export class UsuarioService {
   getAllPendentes() {
     return this.http.get<any[]>(API + "/usuario/pendentes");
   }
+
+  aprovarUsuario(documentId) {
+    return this.http.post(API + "/usuario/aprovar", documentId);
+  }
+
+  reprovarUsuario(documentId) {
+    return this.http.post(API + "/usuario/reprovar", documentId);
+  }
 }

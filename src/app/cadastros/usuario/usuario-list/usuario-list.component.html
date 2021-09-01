@@ -9,9 +9,9 @@
                 *ngIf="dataAprovados$ | async as data"
                 [displayedColumns]="displayedColumns"
                 [dados]="data"
-                [headerTitle]="'Lista de usuários cadastrados no Sistema'"
+                [showHeader]="false"
                 (selectedRow)="onRowSelect($event)"
-                [showAddButtom]="true"
+                [showAddButtom]="false"
                 (acaoSelecionada)="executarAcao($event)"
               >
               </app-tabela>
@@ -24,9 +24,8 @@
                 *ngIf="dataPendentes$ | async as data"
                 [displayedColumns]="displayedColumnsAprovacao"
                 [dados]="data"
-                [headerTitle]="'Lista de usuários cadastrados no Sistema'"
-                (selectedRow)="onRowSelect($event)"
-                [showAddButtom]="true"
+                [showHeader]="false"
+                [showAddButtom]="false"
                 (acaoSelecionada)="executarAcao($event)"
               >
               </app-tabela>
@@ -39,9 +38,8 @@
                 *ngIf="dataReprovados$ | async as data"
                 [displayedColumns]="displayedColumnsReprovados"
                 [dados]="data"
-                [headerTitle]="'Lista de usuários cadastrados no Sistema'"
-                (selectedRow)="onRowSelect($event)"
-                [showAddButtom]="true"
+                [showHeader]="false"
+                [showAddButtom]="false"
                 (acaoSelecionada)="executarAcao($event)"
               >
               </app-tabela>

@@ -63,6 +63,7 @@ export class UsuarioListComponent implements OnInit {
     { head: "Código", el: "id" },
     { head: "Nome", el: "nome" },
     { head: "Email", el: "email" },
+    { head: "Status", el: "statusAprovacaoEnum" },
     {
       head: "Ações",
       el: "actions",
@@ -110,19 +111,27 @@ export class UsuarioListComponent implements OnInit {
     this.itemSelecionado = acaoPropagate.item;
     console.log(acaoPropagate);
 
-    /*switch (acaoPropagate.acao) {
-      case "add-new":
-        this.router.navigate(["usuarios/usuario/0"]);
+    switch (acaoPropagate.acao) {
+      case "aprovar":
+        this.aprovarUsuario();
         break;
       case "excluir":
-        this.excluirItem();
-    }*/
+      case "reprovar":
+        this.reprovarUsuario();
+    }
   }
 
-  @MustConfirm("Deseja realemnte excluir este registro?")
-  excluirItem() {
+  @MustConfirm("Deseja realemente Aprovar este registro?")
+  aprovarUsuario() {
     this.service
-      .deleteById(this.itemSelecionado.documentId)
+      .aprovarUsuario(this.itemSelecionado.documentId)
+      .subscribe(() => this.loadData());
+  }
+
+  @MustConfirm("Deseja realemente Reprovar este registro?")
+  reprovarUsuario() {
+    this.service
+      .reprovarUsuario(this.itemSelecionado.documentId)
       .subscribe(() => this.loadData());
   }
 }
