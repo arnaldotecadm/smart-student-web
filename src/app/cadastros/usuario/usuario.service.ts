@@ -50,4 +50,20 @@ export class UsuarioService {
   reprovarUsuario(documentId) {
     return this.http.post(API + "/usuario/reprovar", documentId);
   }
+
+  ativarUsuario(documentId) {
+    return this.http.post(API + "/usuario/ativar", documentId);
+  }
+
+  desativarUsuario(documentId) {
+    return this.http.post(API + "/usuario/desativar", documentId);
+  }
+
+  definirComoAluno(documentId) {
+    return this.http.post(API + "/usuario/definir-como-aluno", documentId);
+  }
+
+  definirComoProfessor(documentId) {
+    return this.http.post(API + "/usuario/definir-como-professor", documentId);
+  }
 }
