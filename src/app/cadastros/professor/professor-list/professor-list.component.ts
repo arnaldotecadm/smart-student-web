@@ -26,7 +26,7 @@ export class ProfessorListComponent implements OnInit {
     { head: "Código", el: "id" },
     { head: "Nome", el: "nome" },
     { head: "Telefone", el: "telefone" },
-    { head: "Ações", el: "actions", botoes: this.botoes },
+    { head: "Ações", el: "actions" },
   ];
 
   constructor(

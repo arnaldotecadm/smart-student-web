@@ -28,7 +28,7 @@ export class AlunoListComponent implements OnInit {
     { head: "Turma", el: "turma" },
     { head: "Matrícula", el: "matricula" },
     { head: "Telefone", el: "telefone" },
-    { head: "Ações", el: "actions", botoes: this.botoes },
+    { head: "Ações", el: "actions" },
   ];
 
   constructor(
