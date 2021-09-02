@@ -23,10 +23,7 @@
     >
       <div>
         <div>
-          <div
-            *ngFor="let file of fileUploadQueue.files; let i = index"
-            cdkDrag
-          >
+          <div *ngFor="let file of fileUploadQueue.files; let i = index">
             <app-mat-file-upload-multi
               [file]="file"
               [id]="i"

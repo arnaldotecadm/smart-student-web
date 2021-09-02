@@ -90,6 +90,24 @@ export class AtividadeFormComponent
       });
   }
 
+  disponibilizarAtividade() {
+    this.service
+      .disponibilizarAtividade(this.identifier)
+      .subscribe((resposta) => {
+        this.form.resetForm();
+        this.formulario.patchValue(resposta);
+      });
+  }
+
+  indisponibilizarAtividade() {
+    this.service
+      .indisponibilizarAtividade(this.identifier)
+      .subscribe((resposta) => {
+        this.form.resetForm();
+        this.formulario.patchValue(resposta);
+      });
+  }
+
   private construirFormulario() {
     this.formulario = this.formBuilder.group({
       documentId: [],
@@ -101,6 +119,7 @@ export class AtividadeFormComponent
       professor: [],
       tipoAtividade: [],
       notaMaxima: [],
+      statusAtividadeEnum: [{ value: "INDISPONIBILIZADA", disabled: true }],
     });
   }
 }

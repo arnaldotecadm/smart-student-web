@@ -2,198 +2,263 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 col-md-12">
-        <mat-tab-group animationDuration="0ms">
+        <mat-tab-group animationDuration="0ms" [selectedIndex]="1">
           <mat-tab label="Identificação">
-            <ng-template matTabContent>
-              <div class="card">
-                <div class="header">
-                  <div class="row">
-                    <div class="form-group col-md-10">
-                      <h4 class="title">Informações Gerais</h4>
-                    </div>
+            <div class="card">
+              <div class="header">
+                <div class="row">
+                  <div class="form-group col-md-10">
+                    <h4 class="title">Informações Gerais</h4>
+                  </div>
 
-                    <div class="form-group col-md-2 d-flex flex-row-reverse">
-                      <button
-                        (click)="voltar()"
-                        class="btn btn-info btn-fill col-md-12"
-                      >
-                        Voltar
-                      </button>
+                  <div class="form-group col-md-2 d-flex flex-row-reverse">
+                    <button
+                      (click)="voltar()"
+                      class="btn btn-info btn-fill col-md-12"
+                    >
+                      Voltar
+                    </button>
 
-                      <button
-                        class="mr-1 btn btn-success btn-fill col-md-12"
-                        (click)="update()"
-                      >
-                        Gravar
-                      </button>
+                    <button
+                      class="mr-1 btn btn-success btn-fill col-md-12"
+                      (click)="update()"
+                    >
+                      Gravar
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="content">
+                <mat-accordion [multi]="true">
+                  <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Informações Principais
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <form [formGroup]="formulario" #formAtividade="ngForm">
+                      <div class="row">
+                        <div class="col-md-1">
+                          <div class="form-group">
+                            <label>Código</label>
+                            <input class="form-control" formControlName="id" />
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Nome da Atividade</label>
+                            <input
+                              class="form-control"
+                              formControlName="nome"
+                              placeholder="De um nome para essa atividade"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div
+                            class="form-group"
+                            *ngIf="
+                              todosTipoAtividade$ | async as tiposAtividade
+                            "
+                          >
+                            <label>Tipo de Atividade</label>
+                            <select
+                              class="custom-select"
+                              matNativeControl
+                              formControlName="tipoAtividade"
+                            >
+                              <option>Selecione um Registro</option>
+                              <option
+                                *ngFor="let tipoAtividade of tiposAtividade"
+                                [value]="tipoAtividade.documentId"
+                              >
+                                {{ tipoAtividade.nome }}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="col-md-2">
+                          <div class="form-group">
+                            <label>Nota Máxima</label>
+                            <input
+                              class="form-control"
+                              formControlName="notaMaxima"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div
+                            class="form-group"
+                            *ngIf="todasTurmas$ | async as turmas"
+                          >
+                            <label>Turma</label>
+                            <select
+                              class="custom-select"
+                              matNativeControl
+                              formControlName="turma"
+                            >
+                              <option>Selecione um Registro</option>
+                              <option
+                                *ngFor="let turma of turmas"
+                                [value]="turma.documentId"
+                              >
+                                {{ turma.nome }}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div
+                            class="form-group"
+                            *ngIf="todasMaterias$ | async as materias"
+                          >
+                            <label>Materia</label>
+                            <select
+                              class="custom-select"
+                              matNativeControl
+                              formControlName="materia"
+                            >
+                              <option>Selecione um Registro</option>
+                              <option
+                                *ngFor="let materia of materias"
+                                [value]="materia.documentId"
+                              >
+                                {{ materia.nome }}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div
+                            class="form-group"
+                            *ngIf="todosProfessores$ | async as professores"
+                          >
+                            <label>Professor</label>
+                            <select
+                              class="custom-select"
+                              matNativeControl
+                              formControlName="professor"
+                            >
+                              <option>Selecione um Registro</option>
+                              <option
+                                *ngFor="let professor of professores"
+                                [value]="professor.documentId"
+                              >
+                                {{ professor.nome }}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label>Descrição</label>
+                            <textarea
+                              class="form-control"
+                              matInput
+                              placeholder="Aqui voce pode descriver um pouco essa atividade"
+                              formControlName="descricao"
+                            ></textarea>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <app-upload
+                            *ngIf="identifier && identifier != '0'"
+                            #arquivo
+                            [atividadeUUID]="identifier"
+                            accept="*.*"
+                          ></app-upload>
+                        </div>
+                      </div>
+                    </form>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </div>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Detalhes Atividades">
+            <div class="card">
+              <div class="header">
+                <div class="row">
+                  <div class="form-group col-md-10">
+                    <h4 class="title">Informações Gerais</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="content">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Status da Atividade</label>
+                      <input
+                        class="form-control"
+                        [value]="formulario.getRawValue().statusAtividadeEnum"
+                        disabled
+                      />
                     </div>
                   </div>
                 </div>
-                <div class="content">
-                  <mat-accordion [multi]="true">
-                    <mat-expansion-panel [expanded]="true">
-                      <mat-expansion-panel-header>
-                        <mat-panel-title>
-                          Informações Principais
-                        </mat-panel-title>
-                      </mat-expansion-panel-header>
-                      <form [formGroup]="formulario" #formAtividade="ngForm">
-                        <div class="row">
-                          <div class="col-md-1">
-                            <div class="form-group">
-                              <label>Código</label>
-                              <input
-                                class="form-control"
-                                formControlName="id"
-                              />
-                            </div>
-                          </div>
 
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label>Nome da Atividade</label>
-                              <input
-                                class="form-control"
-                                formControlName="nome"
-                                placeholder="De um nome para essa atividade"
-                              />
-                            </div>
-                          </div>
+                <div
+                  class="row"
+                  *ngIf="
+                    formulario.getRawValue().statusAtividadeEnum ===
+                    'INDISPONIBILIZADA'
+                  "
+                >
+                  <div class="form-group col-md-12">
+                    <button
+                      (click)="disponibilizarAtividade()"
+                      class="btn btn-info btn-fill col-md-4"
+                    >
+                      Disponibilizar Atividade Para os alunos
+                    </button>
+                  </div>
+                </div>
 
-                          <div class="col-md-3">
-                            <div
-                              class="form-group"
-                              *ngIf="
-                                todosTipoAtividade$ | async as tiposAtividade
-                              "
-                            >
-                              <label>Tipo de Atividade</label>
-                              <select
-                                class="custom-select"
-                                matNativeControl
-                                formControlName="tipoAtividade"
-                              >
-                                <option>Selecione um Registro</option>
-                                <option
-                                  *ngFor="let tipoAtividade of tiposAtividade"
-                                  [value]="tipoAtividade.documentId"
-                                >
-                                  {{ tipoAtividade.nome }}
-                                </option>
-                              </select>
-                            </div>
-                          </div>
+                <div
+                  class="row"
+                  *ngIf="
+                    formulario.getRawValue().statusAtividadeEnum ===
+                    'DISPONIBILIZADA'
+                  "
+                >
+                  <div class="form-group col-md-12">
+                    <button
+                      (click)="indisponibilizarAtividade()"
+                      class="btn btn-danger btn-fill col-md-4"
+                    >
+                      Indisponibilizar atividade para os alunos
+                    </button>
+                  </div>
+                </div>
 
-                          <div class="col-md-2">
-                            <div class="form-group">
-                              <label>Nota Máxima</label>
-                              <input
-                                class="form-control"
-                                formControlName="notaMaxima"
-                              />
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-md-4">
-                            <div
-                              class="form-group"
-                              *ngIf="todasTurmas$ | async as turmas"
-                            >
-                              <label>Turma</label>
-                              <select
-                                class="custom-select"
-                                matNativeControl
-                                formControlName="turma"
-                              >
-                                <option>Selecione um Registro</option>
-                                <option
-                                  *ngFor="let turma of turmas"
-                                  [value]="turma.documentId"
-                                >
-                                  {{ turma.nome }}
-                                </option>
-                              </select>
-                            </div>
-                          </div>
-
-                          <div class="col-md-4">
-                            <div
-                              class="form-group"
-                              *ngIf="todasMaterias$ | async as materias"
-                            >
-                              <label>Materia</label>
-                              <select
-                                class="custom-select"
-                                matNativeControl
-                                formControlName="materia"
-                              >
-                                <option>Selecione um Registro</option>
-                                <option
-                                  *ngFor="let materia of materias"
-                                  [value]="materia.documentId"
-                                >
-                                  {{ materia.nome }}
-                                </option>
-                              </select>
-                            </div>
-                          </div>
-
-                          <div class="col-md-4">
-                            <div
-                              class="form-group"
-                              *ngIf="todosProfessores$ | async as professores"
-                            >
-                              <label>Professor</label>
-                              <select
-                                class="custom-select"
-                                matNativeControl
-                                formControlName="professor"
-                              >
-                                <option>Selecione um Registro</option>
-                                <option
-                                  *ngFor="let professor of professores"
-                                  [value]="professor.documentId"
-                                >
-                                  {{ professor.nome }}
-                                </option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label>Descrição</label>
-                              <textarea
-                                class="form-control"
-                                matInput
-                                placeholder="Aqui voce pode descriver um pouco essa atividade"
-                                formControlName="descricao"
-                              ></textarea>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-md-12">
-                            <app-upload
-                              *ngIf="identifier && identifier != '0'"
-                              #arquivo
-                              [atividadeUUID]="identifier"
-                              accept="*.*"
-                            ></app-upload>
-                          </div>
-                        </div>
-                      </form>
-                    </mat-expansion-panel>
-                  </mat-accordion>
+                <div class="row">
+                  <div class="form-group col-md-12">
+                    <button class="btn btn-info btn-fill col-md-4">
+                      Definir Alerta para a atividade
+                    </button>
+                  </div>
                 </div>
               </div>
-            </ng-template>
+            </div>
           </mat-tab>
+
+          <mat-tab label="Atividades Enviadas"> </mat-tab>
         </mat-tab-group>
         <div class="col-xl-8 col-lg-7 col-md-12"></div>
       </div>

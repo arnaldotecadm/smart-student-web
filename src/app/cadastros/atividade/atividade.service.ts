@@ -32,4 +32,18 @@ export class AtividadeService {
       API + "/atividade/atividades-por-turma/" + turmaId
     );
   }
+
+  disponibilizarAtividade(atividadeId: string) {
+    return this.http.post<any[]>(
+      API + "/atividade/disponibilizar",
+      atividadeId
+    );
+  }
+
+  indisponibilizarAtividade(atividadeId: string) {
+    return this.http.post<any[]>(
+      API + "/atividade/indisponibilizar",
+      atividadeId
+    );
+  }
 }
