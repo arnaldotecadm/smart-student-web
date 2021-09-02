@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AlunoService } from "app/cadastros/aluno/aluno.service";
+import { AtividadeService } from "app/cadastros/atividade/atividade.service";
 import { FormCanDeactivate } from "app/guards/form-can-deactivate.component";
 import { Observable } from "rxjs";
 import { TurmaService } from "../turma.service";
@@ -18,6 +19,7 @@ export class TurmaFormComponent extends FormCanDeactivate implements OnInit {
   obj$: Observable<any>;
   formulario: FormGroup;
   alunos$: Observable<any>;
+  atividades$: Observable<any>;
 
   botoes = [
     {
@@ -36,12 +38,20 @@ export class TurmaFormComponent extends FormCanDeactivate implements OnInit {
     { head: "Ações", el: "actions", botoes: this.botoes },
   ];
 
+  displayedColumnsAtividadeList = [
+    { head: "Código", el: "id" },
+    { head: "Nome", el: "nome" },
+    { head: "Descrição", el: "descricao" },
+    { head: "Ações", el: "actions", botoes: this.botoes },
+  ];
+
   constructor(
     private service: TurmaService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
-    private alunoService: AlunoService
+    private alunoService: AlunoService,
+    private atividadeService: AtividadeService
   ) {
     super();
   }
@@ -58,6 +68,9 @@ export class TurmaFormComponent extends FormCanDeactivate implements OnInit {
   carregarDados() {
     this.identifier = this.route.snapshot.paramMap.get("identificador");
     this.alunos$ = this.alunoService.getAlunosPorTurma(this.identifier);
+    this.atividades$ = this.atividadeService.getAtividadesPorTurma(
+      this.identifier
+    );
     this.service.getById(this.identifier).subscribe((data) => {
       if (data) {
         this.formulario.patchValue(data);

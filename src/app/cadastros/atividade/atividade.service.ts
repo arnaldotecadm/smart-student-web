@@ -26,4 +26,10 @@ export class AtividadeService {
   deleteById(id: string) {
     return this.http.delete<any[]>(API + "/atividade/" + id);
   }
+
+  getAtividadesPorTurma(turmaId: string) {
+    return this.http.get<any[]>(
+      API + "/atividade/atividades-por-turma/" + turmaId
+    );
+  }
 }
