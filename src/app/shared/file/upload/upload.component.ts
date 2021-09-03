@@ -22,6 +22,7 @@ export class UploadComponent implements OnChanges, AfterContentInit {
 
   RotaApiEntrada = "";
 
+  @Input() tipoMaterial;
   @Input() atividadeUUID;
 
   @Output() RotaApiSaida = API + "/upload/add";
@@ -56,8 +57,10 @@ export class UploadComponent implements OnChanges, AfterContentInit {
       return;
     }
 
-    this.service.getAllByAtividade(this.atividadeUUID).subscribe((dados) => {
-      this.listaArquivos = dados;
-    });
+    this.service
+      .getAllByAtividade(this.tipoMaterial, this.atividadeUUID)
+      .subscribe((dados) => {
+        this.listaArquivos = dados;
+      });
   }
 }

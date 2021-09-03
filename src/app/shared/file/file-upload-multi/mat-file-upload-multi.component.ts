@@ -36,6 +36,7 @@ export class MatFileUploadMultiComponent {
   fromDataBase = false;
 
   @Input() httpUrl = "";
+  @Input() tipoMaterial = "";
 
   @Input()
   httpRequestParams:
@@ -112,6 +113,7 @@ export class MatFileUploadMultiComponent {
       const formData = new FormData();
       formData.set(this.fileAlias, this._file, this._file.name);
       formData.append("ordem", this._file.ordem);
+      formData.append("tipoMaterial", "" + this.tipoMaterial);
       formData.append("atividadeUUID", "" + this.atividadeUUID);
 
       this.fileUploadSubscription = this.httpClient
@@ -203,7 +205,7 @@ export class MatFileUploadMultiComponent {
 
   public download(atividadeId: string, nomeArquivo: string) {
     this.fileService
-      .download(atividadeId, nomeArquivo)
+      .download(this.tipoMaterial, atividadeId, nomeArquivo)
       .subscribe((res: HttpResponse<ArrayBuffer>) => {
         ArquivoHandler.renderAndDownloadFile(res.body, nomeArquivo);
       });

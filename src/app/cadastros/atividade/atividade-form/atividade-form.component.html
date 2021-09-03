@@ -178,6 +178,7 @@
                           <app-upload
                             *ngIf="identifier && identifier != '0'"
                             #arquivo
+                            [tipoMaterial]="'material-de-apoio'"
                             [atividadeUUID]="identifier"
                             accept="*.*"
                           ></app-upload>
