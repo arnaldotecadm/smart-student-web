@@ -1,1 +1,9 @@
-<p>minhas-atividades-list works!</p>
+<app-tabela
+  *ngIf="data$ | async as data"
+  [displayedColumns]="displayedColumns"
+  [dados]="data"
+  [headerTitle]="'Minhas atividades'"
+  (selectedRow)="onRowSelect($event)"
+  [showAddButtom]="true"
+  (acaoSelecionada)="executarAcao($event)"
+></app-tabela>

@@ -90,6 +90,7 @@ export class AlunoFormComponent extends FormCanDeactivate implements OnInit {
       contato: [],
       email: [],
       ativo: [],
+      usuario: [],
     });
   }
 }
