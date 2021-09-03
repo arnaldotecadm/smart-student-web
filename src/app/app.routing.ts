@@ -25,6 +25,8 @@ import { AtividadeListComponent } from "./cadastros/atividade/atividade-list/ati
 import { AtividadeFormComponent } from "./cadastros/atividade/atividade-form/atividade-form.component";
 import { UsuarioListComponent } from "./cadastros/usuario/usuario-list/usuario-list.component";
 import { UsuarioFormComponent } from "./cadastros/usuario/usuario-form/usuario-form.component";
+import { MinhasAtividadesListComponent } from "./cadastros/minhas-atividades/minhas-atividades-list/minhas-atividades-list.component";
+import { MinhasAtividadesFormComponent } from "./cadastros/minhas-atividades/minhas-atividades-form/minhas-atividades-form.component";
 
 const routes: Routes = [
   {
@@ -131,6 +133,19 @@ const routes: Routes = [
   {
     path: "tipo-atividades/atividade/:identificador",
     component: TipoAtividadeFormComponent,
+    canActivate: [AuthGuard],
+    canDeactivate: [CanDeactivateGuard],
+  },
+
+  {
+    path: "minhas-atividades",
+    component: MinhasAtividadesListComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: "minhas-atividades/minha-atividade/:identificador",
+    component: MinhasAtividadesFormComponent,
     canActivate: [AuthGuard],
     canDeactivate: [CanDeactivateGuard],
   },
