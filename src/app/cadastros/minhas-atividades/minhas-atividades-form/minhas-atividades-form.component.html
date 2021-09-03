@@ -1,1 +1,80 @@
-<p>minhas-atividades-form works!</p>
+<div class="main-content mt-3">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 col-md-12">
+        <mat-tab-group animationDuration="0ms">
+          <mat-tab label="Meus arquivos">
+            <ng-template matTabContent>
+              <div class="card" *ngIf="atividade$ | async as atividade">
+                <div class="header">
+                  <div class="row">
+                    <div class="form-group col-md-10">
+                      <h4 class="title">{{ atividade.nome }}</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="content">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Arquivos de apoio para a atividade</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <app-upload
+                        *ngIf="identifier && identifier != '0'"
+                        #arquivo
+                        [tipoMaterial]="'material-de-apoio'"
+                        [atividadeUUID]="identifier"
+                        accept="*.*"
+                      ></app-upload>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </mat-tab>
+
+          <mat-tab label="Meus arquivos">
+            <ng-template matTabContent>
+              <div class="card" *ngIf="atividade$ | async as atividade">
+                <div class="header">
+                  <div class="row">
+                    <div class="form-group col-md-10">
+                      <h4 class="title">{{ atividade.nome }}</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="content">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Carregar Arquivos para a atividade</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <app-upload
+                        *ngIf="identifier && identifier != '0'"
+                        #arquivo
+                        [tipoMaterial]="'respostas-dos-alunos'"
+                        [atividadeUUID]="identifier"
+                        accept="*.*"
+                      ></app-upload>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+        <div class="col-xl-8 col-lg-7 col-md-12"></div>
+      </div>
+    </div>
+  </div>
+</div>

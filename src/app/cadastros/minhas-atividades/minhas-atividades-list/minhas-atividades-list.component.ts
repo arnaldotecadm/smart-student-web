@@ -47,7 +47,9 @@ export class MinhasAtividadesListComponent implements OnInit {
     if (!$event) {
       return;
     }
-    this.router.navigate(["atividades/atividade/" + $event.documentId]);
+    this.router.navigate([
+      "minhas-atividades/minha-atividade/" + $event.documentId,
+    ]);
   }
 
   executarAcao(acaoPropagate) {
