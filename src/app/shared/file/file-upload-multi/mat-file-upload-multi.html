@@ -1,12 +1,12 @@
 <mat-card class="col-md-12" class="div-upload">
   <div>
     <span
-      style="position: absolute; top: 1px;"
+      style="position: absolute; top: 1px"
       *ngIf="progressoNaoIniciada && status != 'Gravado'"
       class="file-info {{(isUploading) ? 'uploading' : (!gravadoNaBase && !fromDataBase) ? 'not_uploaded' : 'uploaded'}}"
       [class.erro]="ErroUpload"
       >{{status}}
-      <span style="position: relative;">
+      <span style="position: relative">
         <img *ngIf="gravadoNaBase" src="./assets/img/path.png" />
       </span>
     </span>
@@ -62,7 +62,7 @@
 
     <!-- Deletar Arquivo -->
     <div class="col-md-1">
-      <mat-icon class="pointer" (click)="remove()">
+      <mat-icon class="pointer" (click)="remove()" *ngIf="habilitarManipulacao">
         <img class="mr-3" src="./assets/img/apagar.svg" />
       </mat-icon>
     </div>
@@ -73,6 +73,6 @@
     {{getNomeArquivoOriginal(file.name)}}
   </span>
 </mat-card>
-<span *ngIf="ErroUpload" style="color: red; font-size: 11px;"
+<span *ngIf="ErroUpload" style="color: red; font-size: 11px"
   >{{SaidaErroMensagem}}
 </span>

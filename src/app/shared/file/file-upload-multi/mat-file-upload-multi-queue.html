@@ -3,6 +3,7 @@
   class="mr-5"
   (click)="uploadAll()"
   style="width: 184px"
+  *ngIf="habilitarManipulacao"
 >
   <img class="mr-3" src="./assets/img/carregar.svg" />
   Carregar Todos
@@ -13,6 +14,7 @@
   class="mr-5"
   (click)="removeAll()"
   style="width: 184px"
+  *ngIf="habilitarManipulacao"
 >
   <img class="mr-3" src="./assets/img/apagar.svg" />
   Excluir Todos

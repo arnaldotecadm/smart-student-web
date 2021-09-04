@@ -69,7 +69,7 @@ export class MatFileUploadQueueComponent
   @Input() fileAlias = "file";
   @Input() controllerAction = "";
   @Input() httpUrl = "";
-  @Input() modoEdicao: boolean;
+  @Input() habilitarManipulacao: true;
   hasFiles = false;
   contagem = 0;
   ArquivosNaoCarregados = false;

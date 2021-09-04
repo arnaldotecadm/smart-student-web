@@ -1,6 +1,6 @@
 <div [fileUploadInputFor]="fileUploadQueue" class="upload-drop-zone">
   <div class="upload-btn-wrapper" style="width: 800px">
-    <button mat-raised-button class="mr-5">
+    <button mat-raised-button class="mr-5" *ngIf="habilitarManipulacao">
       <img class="mr-3" src="./assets/img/ico_escolher_habilitado.svg" />
       escolher arquivo(s)
     </button>
@@ -19,6 +19,7 @@
       #fileUploadQueue
       [listaArquivos]="listaArquivos"
       [httpUrl]="RotaApiSaida"
+      [habilitarManipulacao]="habilitarManipulacao"
       multiple
     >
       <div>
@@ -31,6 +32,7 @@
               [tipoMaterial]="tipoMaterial"
               [atividadeUUID]="atividadeUUID"
               (removeEvent)="removeEntry($event)"
+              [habilitarManipulacao]="habilitarManipulacao"
             >
             </app-mat-file-upload-multi>
           </div>

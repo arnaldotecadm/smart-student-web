@@ -37,6 +37,7 @@ export class MatFileUploadMultiComponent {
 
   @Input() httpUrl = "";
   @Input() tipoMaterial = "";
+  @Input() habilitarManipulacao = true;
 
   @Input()
   httpRequestParams:

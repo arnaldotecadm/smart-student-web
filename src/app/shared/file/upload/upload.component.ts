@@ -24,12 +24,13 @@ export class UploadComponent implements OnChanges, AfterContentInit {
 
   @Input() tipoMaterial;
   @Input() atividadeUUID;
-
   @Output() RotaApiSaida = API + "/upload/add";
 
   @ViewChild("fileUploadQueue", { static: false }) matFileUpload: any;
 
   @Input() accept = ".pdf";
+
+  @Input() habilitarManipulacao = true;
 
   constructor(private cdr: ChangeDetectorRef, private service: FileService) {}
 
