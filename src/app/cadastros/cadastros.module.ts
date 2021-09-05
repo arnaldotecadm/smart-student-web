@@ -6,6 +6,9 @@ import { AlunoModule } from "./aluno/aluno.module";
 import { AtividadeFormComponent } from "./atividade/atividade-form/atividade-form.component";
 import { AtividadeListComponent } from "./atividade/atividade-list/atividade-list.component";
 import { AtividadeModule } from "./atividade/atividade.module";
+import { AtividadesSubmetidasFormComponent } from "./atividades-submetidas/atividades-submetidas-form/atividades-submetidas-form.component";
+import { AtividadesSubmetidasListComponent } from "./atividades-submetidas/atividades-submetidas-list/atividades-submetidas-list.component";
+import { AtividadesSubmetidasModule } from "./atividades-submetidas/atividades-submetidas.module";
 import { ConfiguracaoComponent } from "./configuracao/configuracao.component";
 import { ConfiguracaoModule } from "./configuracao/configuracao.module";
 import { MateriaFormComponent } from "./materia/materia-form/materia-form.component";
@@ -47,6 +50,7 @@ import { UsuarioModule } from "./usuario/usuario.module";
     NotaModule,
     UsuarioModule,
     MinhasAtividadesModule,
+    AtividadesSubmetidasModule,
   ],
   exports: [
     AlunoListComponent,
@@ -69,6 +73,8 @@ import { UsuarioModule } from "./usuario/usuario.module";
     UsuarioListComponent,
     MinhasAtividadesFormComponent,
     MinhasAtividadesListComponent,
+    AtividadesSubmetidasListComponent,
+    AtividadesSubmetidasFormComponent,
   ],
 })
 export class CadastrosModule {}
