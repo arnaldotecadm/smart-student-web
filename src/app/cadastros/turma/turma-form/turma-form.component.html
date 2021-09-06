@@ -147,6 +147,7 @@
                     [showHeader]="false"
                     [pageSizeOptions]="[5, 10, 15, 20, 30]"
                     (acaoSelecionada)="executarAcao($event)"
+                    (selectedRow)="onRowSelect($event)"
                     [marginTop]="false"
                   ></app-tabela>
                 </div>

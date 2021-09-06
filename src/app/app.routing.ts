@@ -27,6 +27,7 @@ import { UsuarioListComponent } from "./cadastros/usuario/usuario-list/usuario-l
 import { UsuarioFormComponent } from "./cadastros/usuario/usuario-form/usuario-form.component";
 import { MinhasAtividadesListComponent } from "./cadastros/minhas-atividades/minhas-atividades-list/minhas-atividades-list.component";
 import { MinhasAtividadesFormComponent } from "./cadastros/minhas-atividades/minhas-atividades-form/minhas-atividades-form.component";
+import { AtividadesSubmetidasListComponent } from "./cadastros/atividades-submetidas/atividades-submetidas-list/atividades-submetidas-list.component";
 
 const routes: Routes = [
   {
@@ -173,6 +174,13 @@ const routes: Routes = [
     path: "notificacoes",
     component: NotificacaoComponent,
     canActivate: [AuthGuard],
+  },
+
+  {
+    path: "atividades-submetidas/:identificador",
+    component: AtividadesSubmetidasListComponent,
+    canActivate: [AuthGuard],
+    canDeactivate: [CanDeactivateGuard],
   },
 
   {

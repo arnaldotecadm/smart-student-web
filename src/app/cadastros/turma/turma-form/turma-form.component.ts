@@ -20,6 +20,7 @@ export class TurmaFormComponent extends FormCanDeactivate implements OnInit {
   formulario: FormGroup;
   alunos$: Observable<any>;
   atividades$: Observable<any>;
+  itemSelecionado;
 
   botoes = [
     {
@@ -106,5 +107,13 @@ export class TurmaFormComponent extends FormCanDeactivate implements OnInit {
       nome: ["", Validators.required],
       descricao: [""],
     });
+  }
+
+  onRowSelect($event) {
+    debugger;
+    if (!$event) {
+      return;
+    }
+    this.router.navigate(["atividades-submetidas/" + $event.documentId]);
   }
 }
