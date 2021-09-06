@@ -110,7 +110,6 @@ export class TurmaFormComponent extends FormCanDeactivate implements OnInit {
   }
 
   onRowSelect($event) {
-    debugger;
     if (!$event) {
       return;
     }

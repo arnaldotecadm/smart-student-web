@@ -66,4 +66,10 @@ export class UsuarioService {
   definirComoProfessor(documentId) {
     return this.http.post(API + "/usuario/definir-como-professor", documentId);
   }
+
+  getAlunosQueJaEnviaramAtividades(documentId) {
+    return this.http.get(
+      API + "/upload/atividades-submetidas-alunos/" + documentId
+    );
+  }
 }
