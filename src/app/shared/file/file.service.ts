@@ -14,10 +14,16 @@ export class FileService {
     return this.http.post<any>(API + "/upload/add", formData);
   }
 
-  getAllByAtividade(tipoMaterial, atividadeId) {
-    return this.http.get<any[]>(
-      API + "/upload/all/" + tipoMaterial + "/" + atividadeId
-    );
+  getAllByAtividade(tipoMaterial, atividadeId, usuario) {
+    if (usuario) {
+      return this.http.get<any[]>(
+        API + "/upload/all/" + tipoMaterial + "/" + atividadeId + "/" + usuario
+      );
+    } else {
+      return this.http.get<any[]>(
+        API + "/upload/all/" + tipoMaterial + "/" + atividadeId
+      );
+    }
   }
 
   removeById(id: number) {
