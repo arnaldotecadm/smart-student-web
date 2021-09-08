@@ -103,3 +103,17 @@ body {
 .disabled-control {
   cursor: no-drop;
 }
+
+.aluno-presente {
+  font-weight: bold;
+  color: green;
+}
+
+.aluno-ausente {
+  font-weight: bold;
+  color: red;
+}
+
+.mouse-hover {
+  background: whitesmoke;
+}

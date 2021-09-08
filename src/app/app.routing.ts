@@ -28,6 +28,7 @@ import { UsuarioFormComponent } from "./cadastros/usuario/usuario-form/usuario-f
 import { MinhasAtividadesListComponent } from "./cadastros/minhas-atividades/minhas-atividades-list/minhas-atividades-list.component";
 import { MinhasAtividadesFormComponent } from "./cadastros/minhas-atividades/minhas-atividades-form/minhas-atividades-form.component";
 import { AtividadesSubmetidasListComponent } from "./cadastros/atividades-submetidas/atividades-submetidas-list/atividades-submetidas-list.component";
+import { AtividadesSubmetidasFormComponent } from "./cadastros/atividades-submetidas/atividades-submetidas-form/atividades-submetidas-form.component";
 
 const routes: Routes = [
   {
@@ -179,6 +180,13 @@ const routes: Routes = [
   {
     path: "atividades-submetidas/:identificador",
     component: AtividadesSubmetidasListComponent,
+    canActivate: [AuthGuard],
+    canDeactivate: [CanDeactivateGuard],
+  },
+
+  {
+    path: "atividades-submetidas/atividades-submetida/:atividade/:usuario",
+    component: AtividadesSubmetidasFormComponent,
     canActivate: [AuthGuard],
     canDeactivate: [CanDeactivateGuard],
   },
