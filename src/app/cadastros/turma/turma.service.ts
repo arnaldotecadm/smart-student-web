@@ -52,4 +52,12 @@ export class TurmaService implements CalendarioEventInterface {
 
     return this.http.post<any[]>(API + "/calendario-turma", calendarioTurma);
   }
+
+  savePresenceList(data) {
+    return this.http.post<any[]>(API + "/lista-presenca/add-all-aluno", data);
+  }
+
+  getListaPresencaByTurmaId(turmaId) {
+    return this.http.get<any[]>(API + "/lista-presenca/by-turma/" + turmaId);
+  }
 }

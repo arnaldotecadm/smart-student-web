@@ -52,7 +52,13 @@ export class AtividadesSubmetidasListComponent implements OnInit {
     if (!$event) {
       return;
     }
-    this.router.navigate(["turmas/turma/" + $event.documentId]);
+
+    this.router.navigate([
+      "atividades-submetidas/atividades-submetida/" +
+        this.identifier +
+        "/" +
+        $event.usuario,
+    ]);
   }
 
   executarAcao(acaoPropagate) {

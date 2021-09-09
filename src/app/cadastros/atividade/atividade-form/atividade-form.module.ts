@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatTabsModule } from "@angular/material/tabs";
 import { FileModule } from "app/shared/file/file.module";
+import { AtividadesSubmetidasModule } from "app/cadastros/atividades-submetidas/atividades-submetidas.module";
 
 @NgModule({
   declarations: [AtividadeFormComponent],
@@ -14,6 +15,7 @@ import { FileModule } from "app/shared/file/file.module";
     MatExpansionModule,
     ReactiveFormsModule,
     FileModule,
+    AtividadesSubmetidasModule,
   ],
   exports: [AtividadeFormComponent],
 })
