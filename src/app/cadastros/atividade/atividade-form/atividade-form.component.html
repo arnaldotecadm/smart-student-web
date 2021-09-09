@@ -1,7 +1,7 @@
 <div class="main-content mt-3">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 col-md-12">
+      <div class="col-md-12">
         <mat-tab-group animationDuration="0ms" [selectedIndex]="0">
           <mat-tab label="Identificação">
             <div class="card">
@@ -259,7 +259,9 @@
             </div>
           </mat-tab>
 
-          <mat-tab label="Atividades Enviadas"> </mat-tab>
+          <mat-tab label="Atividades Enviadas">
+            <app-atividades-submetidas-list></app-atividades-submetidas-list>
+          </mat-tab>
         </mat-tab-group>
         <div class="col-xl-8 col-lg-7 col-md-12"></div>
       </div>
