@@ -118,6 +118,65 @@
             </ng-template>
           </mat-tab>
 
+          <mat-tab label="Efetuar Chamada">
+            <ng-template matTabContent>
+              <div class="card">
+                <div class="header">
+                  <div class="row">
+                    <div class="form-group col-md-10">
+                      <h4 class="title">Alunos desta Turma</h4>
+                    </div>
+
+                    <div class="form-group col-md-2 d-flex flex-row-reverse">
+                      <button
+                        (click)="voltar()"
+                        class="btn btn-info btn-fill col-md-12"
+                      >
+                        Voltar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="content" *ngIf="alunos$ | async as alunoList">
+                  <app-chamada-calendario></app-chamada-calendario>
+                  <button
+                    (click)="imprimirListaPresenca(alunoList)"
+                    class="btn btn-info btn-fill col-md-12"
+                  >
+                    Imprimir Lista de Presenca
+                  </button>
+
+                  <div
+                    class="row aluno-chamada"
+                    *ngFor="let aluno of alunoList; index as index"
+                    [class.mouse-hover]="index % 2 === 0"
+                  >
+                    <div class="col-md-7">
+                      <label class="aluno-chamada-label">{{
+                        aluno.nome
+                      }}</label>
+                    </div>
+
+                    <div class="col-md-5">
+                      <mat-slide-toggle
+                        #presenca
+                        (change)="aluno.presenca = presenca.checked"
+                        ><span
+                          [ngClass]="
+                            presenca.checked
+                              ? 'aluno-presente'
+                              : 'aluno-ausente'
+                          "
+                          >{{ presenca.checked ? "Presente" : "Ausente" }}
+                        </span>
+                      </mat-slide-toggle>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </mat-tab>
+
           <mat-tab label="Atividades desta Turma">
             <ng-template matTabContent>
               <div class="card">
@@ -147,7 +206,7 @@
                     [showHeader]="false"
                     [pageSizeOptions]="[5, 10, 15, 20, 30]"
                     (acaoSelecionada)="executarAcao($event)"
-                    (selectedRow)="onRowSelect($event)"
+                    (selectedRow)="onRowSelectAtividade($event)"
                     [marginTop]="false"
                   ></app-tabela>
                 </div>

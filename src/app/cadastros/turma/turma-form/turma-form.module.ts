@@ -1,11 +1,13 @@
-import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { TurmaFormComponent } from "./turma-form.component";
-import { MatTabsModule } from "@angular/material/tabs";
-import { MatExpansionModule } from "@angular/material/expansion";
+import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
-import { TabelasModule } from "app/shared/tabelas/tabelas.module";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { MatTabsModule } from "@angular/material/tabs";
 import { CalendarioModule } from "app/shared/calendario/calendario.module";
+import { TabelasModule } from "app/shared/tabelas/tabelas.module";
+import { ChamadaCalendarioModule } from "../chamada/chamada-calendario/chamada-calendario.module";
+import { TurmaFormComponent } from "./turma-form.component";
 
 @NgModule({
   declarations: [TurmaFormComponent],
@@ -16,6 +18,8 @@ import { CalendarioModule } from "app/shared/calendario/calendario.module";
     ReactiveFormsModule,
     TabelasModule,
     CalendarioModule,
+    MatSlideToggleModule,
+    ChamadaCalendarioModule,
   ],
   exports: [TurmaFormComponent],
 })

@@ -20,6 +20,7 @@ export class TurmaFormComponent extends FormCanDeactivate implements OnInit {
   formulario: FormGroup;
   alunos$: Observable<any>;
   atividades$: Observable<any>;
+  alunoList;
   itemSelecionado;
 
   botoes = [
@@ -114,5 +115,24 @@ export class TurmaFormComponent extends FormCanDeactivate implements OnInit {
       return;
     }
     this.router.navigate(["atividades-submetidas/" + $event.documentId]);
+  }
+
+  onRowSelectAtividade($event) {
+    if (!$event) {
+      return;
+    }
+    this.router.navigate(["atividades/atividade/" + $event.documentId]);
+  }
+
+  imprimirListaPresenca(alunoList) {
+    if (alunoList) {
+      alunoList.forEach((element) => {
+        console.log(
+          element["nome"] +
+            " - " +
+            (!!element["presenca"] ? "Presente" : "Ausente")
+        );
+      });
+    }
   }
 }
