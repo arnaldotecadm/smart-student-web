@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { AlunoService } from "app/cadastros/aluno/aluno.service";
 import { AtividadeService } from "app/cadastros/atividade/atividade.service";
 import { MinhasAtividadesService } from "app/cadastros/minhas-atividades/minhas-atividades.service";
 import { FormCanDeactivate } from "app/guards/form-can-deactivate.component";
@@ -19,6 +20,7 @@ export class AtividadesSubmetidasFormComponent
 
   identifier: string;
   usuario: string;
+  aluno$: Observable<any>;
   obj$: Observable<any>;
   atividade$: Observable<any>;
   formulario: FormGroup;
@@ -28,7 +30,8 @@ export class AtividadesSubmetidasFormComponent
     private atividadeService: AtividadeService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private alunoService: AlunoService
   ) {
     super();
   }
@@ -46,6 +49,7 @@ export class AtividadesSubmetidasFormComponent
     this.identifier = this.route.snapshot.paramMap.get("atividade");
     this.usuario = this.route.snapshot.paramMap.get("usuario");
     this.atividade$ = this.atividadeService.getById(this.identifier);
+    this.aluno$ = this.alunoService.getByUsuarioUid(this.usuario);
   }
 
   voltar() {

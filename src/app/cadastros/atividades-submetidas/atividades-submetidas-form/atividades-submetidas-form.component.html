@@ -3,13 +3,21 @@
     <div class="row">
       <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 col-md-12">
         <mat-tab-group animationDuration="0ms">
-          <mat-tab label="Arquivos Enviados por:">
+          <mat-tab label="Arquivos Enviados por">
             <ng-template matTabContent>
               <div class="card" *ngIf="atividade$ | async as atividade">
                 <div class="header">
                   <div class="row">
                     <div class="form-group col-md-10">
                       <h4 class="title">{{ atividade.nome }}</h4>
+                    </div>
+                  </div>
+
+                  <div class="row" *ngIf="aluno$ | async as aluno">
+                    <div class="form-group col-md-10">
+                      <h4 class="title">
+                        Aluno: <span class="aluno-nome">{{ aluno.nome }}</span>
+                      </h4>
                     </div>
                   </div>
                 </div>

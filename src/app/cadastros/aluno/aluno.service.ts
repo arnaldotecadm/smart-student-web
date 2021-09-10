@@ -27,6 +27,10 @@ export class AlunoService {
     return this.http.get<any[]>(API + "/aluno/" + id);
   }
 
+  getByUsuarioUid(id: string) {
+    return this.http.get<any[]>(API + "/aluno/aluno-por-uid/" + id);
+  }
+
   salvarRegistro(formData) {
     return this.http.post<any>(API + "/aluno", formData);
   }
