@@ -31,6 +31,8 @@ export class ChamadaCalendarioComponent implements OnInit {
   formulario: FormGroup;
   alunoList;
 
+  presencaList;
+
   @Input() service: CalendarioEventInterface;
   @Input() idRelacionamento;
   currentDocumentId;
@@ -82,8 +84,8 @@ export class ChamadaCalendarioComponent implements OnInit {
         this.dayClick(args.date, args.dateStr, args.jsEvent, args.view);
       },
       eventClick: (args) => {
-        this.dataAtual = args.event.extendedProps.dataAtual;
         this.currentDocumentId = args.event.extendedProps.currentDocumentId;
+        this.dataAtual = args.event.extendedProps.dataAtual;
         this.openDialog();
       },
       header: {
@@ -114,6 +116,34 @@ export class ChamadaCalendarioComponent implements OnInit {
   }
 
   openDialog(): void {
+    this.alunoList.forEach((el) => {
+      el.presenca = false;
+    });
+
+    let presenca;
+    let dataComparar = this.dataAtualStr;
+    if (this.currentDocumentId != "") {
+      presenca = this.presencaList.filter(
+        (item) => item.documentId === this.currentDocumentId
+      );
+    } else {
+      presenca = this.presencaList.filter(
+        (item) =>
+          moment(item.data, "DD/MM/YYYY").format("YYYY-MM-DD") == dataComparar
+      );
+    }
+
+    if (presenca && presenca.length > 0) {
+      this.alunoList.forEach((el) => {
+        const aluno = presenca[0].alunoList.filter(
+          (item) => item.aluno == el.usuario
+        );
+        if (aluno.length > 0) {
+          el.presenca = aluno[0].presente;
+        }
+      });
+    }
+
     const dialogRef = this.dialog.open(ChamadaModalComponent, {
       width: "850px",
       data: {
@@ -123,6 +153,7 @@ export class ChamadaCalendarioComponent implements OnInit {
         dataSelecionada: this.dataAtual,
         turma: this.identifier,
         alunoList: this.alunoList,
+        presenca: presenca,
       },
     });
 
@@ -140,24 +171,27 @@ export class ChamadaCalendarioComponent implements OnInit {
     this.turmaService
       .getListaPresencaByTurmaId(this.identifier)
       .subscribe((data) => {
-        console.log(data);
+        this.presencaList = data;
+        data.forEach((item) => {
+          this.addCalendarEvent(item);
+        });
       });
   }
 
   addCalendarEvent(item) {
-    if (this.calendar.getEventById(item.documentId)) {
-      this.calendar.getEventById(item.documentId).remove();
+    if (this.calendar.getEventById(item.id)) {
+      this.calendar.getEventById(item.id).remove();
     }
 
     const evento = {
-      date: moment(item.data).format("YYYY-MM-DD"),
+      date: moment(item.data, "DD/MM/YYYY").format("YYYY-MM-DD"),
       id: item.documentId,
-      title: item.evento,
+      title: "Chamada",
       backgroundColor: item.idFuncionario === 1 ? "#bc79ff" : "#3788d8",
       editable: false,
       extendedProps: {
         currentDocumentId: item.documentId,
-        dataAtual: moment(item.data).format("YYYY-MM-DD"),
+        dataAtual: moment(item.data, "DD/MM/YYYY").format("YYYY-MM-DD"),
       },
     };
     this.calendar.addEvent(evento);

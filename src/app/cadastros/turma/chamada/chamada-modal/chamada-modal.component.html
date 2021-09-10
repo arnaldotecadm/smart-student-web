@@ -24,11 +24,12 @@
                 <mat-slide-toggle
                   #presenca
                   (change)="aluno.presenca = presenca.checked"
+                  [checked]="aluno.presenca"
                   ><span
                     [ngClass]="
-                      presenca.checked ? 'aluno-presente' : 'aluno-ausente'
+                      aluno.presenca ? 'aluno-presente' : 'aluno-ausente'
                     "
-                    >{{ presenca.checked ? "Presente" : "Ausente" }}
+                    >{{ aluno.presenca ? "Presente" : "Ausente" }}
                   </span>
                 </mat-slide-toggle>
               </div>

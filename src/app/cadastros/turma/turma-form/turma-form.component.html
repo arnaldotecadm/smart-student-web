@@ -139,39 +139,6 @@
                 </div>
                 <div class="content" *ngIf="alunos$ | async as alunoList">
                   <app-chamada-calendario></app-chamada-calendario>
-                  <button
-                    (click)="imprimirListaPresenca(alunoList)"
-                    class="btn btn-info btn-fill col-md-12"
-                  >
-                    Imprimir Lista de Presenca
-                  </button>
-
-                  <div
-                    class="row aluno-chamada"
-                    *ngFor="let aluno of alunoList; index as index"
-                    [class.mouse-hover]="index % 2 === 0"
-                  >
-                    <div class="col-md-7">
-                      <label class="aluno-chamada-label">{{
-                        aluno.nome
-                      }}</label>
-                    </div>
-
-                    <div class="col-md-5">
-                      <mat-slide-toggle
-                        #presenca
-                        (change)="aluno.presenca = presenca.checked"
-                        ><span
-                          [ngClass]="
-                            presenca.checked
-                              ? 'aluno-presente'
-                              : 'aluno-ausente'
-                          "
-                          >{{ presenca.checked ? "Presente" : "Ausente" }}
-                        </span>
-                      </mat-slide-toggle>
-                    </div>
-                  </div>
                 </div>
               </div>
             </ng-template>
