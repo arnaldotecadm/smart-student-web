@@ -20,6 +20,18 @@
                       </h4>
                     </div>
                   </div>
+
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Atribuir nota à Atividade</label>
+                        <input
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
                 <div class="content">
                   <div class="row">
@@ -39,6 +51,7 @@
                         [atividadeUUID]="identifier"
                         [usuario]="usuario"
                         accept="*.*"
+                        [habilitarManipulacao]="false"
                       ></app-upload>
                     </div>
                   </div>

@@ -45,7 +45,7 @@ export class ChamadaModalComponent implements OnInit {
     };
 
     this.turmaService.savePresenceList(listaPresenca).subscribe((data) => {
-      console.log("Registro Salvo com Sucesso");
+      this.dialogRef.close(true)
     });
   }
 

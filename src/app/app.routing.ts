@@ -9,8 +9,6 @@ import { TipoAtividadeListComponent } from "./cadastros/tipo-atividade/tipo-ativ
 import { ConfiguracaoComponent } from "./cadastros/configuracao/configuracao.component";
 import { MateriaFormComponent } from "./cadastros/materia/materia-form/materia-form.component";
 import { MateriaListComponent } from "./cadastros/materia/materia-list/materia-list.component";
-import { NotaFormComponent } from "./cadastros/nota/nota-form/nota-form.component";
-import { NotaListComponent } from "./cadastros/nota/nota-list/nota-list.component";
 import { NotificacaoComponent } from "./cadastros/notificacao/notificacao.component";
 import { ProfessorFormComponent } from "./cadastros/professor/professor-form/professor-form.component";
 import { ProfessorListComponent } from "./cadastros/professor/professor-list/professor-list.component";
@@ -96,19 +94,6 @@ const routes: Routes = [
   {
     path: "materias/materia/:identificador",
     component: MateriaFormComponent,
-    canActivate: [AuthGuard],
-    canDeactivate: [CanDeactivateGuard],
-  },
-
-  {
-    path: "notas",
-    component: NotaListComponent,
-    canActivate: [AuthGuard],
-  },
-
-  {
-    path: "notas/nota/:identificador",
-    component: NotaFormComponent,
     canActivate: [AuthGuard],
     canDeactivate: [CanDeactivateGuard],
   },

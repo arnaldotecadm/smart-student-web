@@ -17,9 +17,6 @@ import { MateriaModule } from "./materia/materia.module";
 import { MinhasAtividadesFormComponent } from "./minhas-atividades/minhas-atividades-form/minhas-atividades-form.component";
 import { MinhasAtividadesListComponent } from "./minhas-atividades/minhas-atividades-list/minhas-atividades-list.component";
 import { MinhasAtividadesModule } from "./minhas-atividades/minhas-atividades.module";
-import { NotaFormComponent } from "./nota/nota-form/nota-form.component";
-import { NotaListComponent } from "./nota/nota-list/nota-list.component";
-import { NotaModule } from "./nota/nota.module";
 import { NotificacaoComponent } from "./notificacao/notificacao.component";
 import { NotificacaoModule } from "./notificacao/notificacao.module";
 import { ProfessorFormComponent } from "./professor/professor-form/professor-form.component";
@@ -47,7 +44,6 @@ import { UsuarioModule } from "./usuario/usuario.module";
     TurmaModule,
     AtividadeModule,
     TipoAtividadeModule,
-    NotaModule,
     UsuarioModule,
     MinhasAtividadesModule,
     AtividadesSubmetidasModule,
@@ -67,8 +63,6 @@ import { UsuarioModule } from "./usuario/usuario.module";
     AtividadeListComponent,
     TipoAtividadeFormComponent,
     TipoAtividadeListComponent,
-    NotaFormComponent,
-    NotaListComponent,
     UsuarioFormComponent,
     UsuarioListComponent,
     MinhasAtividadesFormComponent,

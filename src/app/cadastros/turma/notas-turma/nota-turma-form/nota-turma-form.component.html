@@ -1,0 +1,74 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+
+          <div class="content" *ngIf="alunoList">
+            <div class="row">
+              <div class="col-md-3">
+                <label class="aluno-chamada-label">Nome do Aluno</label>
+              </div>
+
+              <div class="col-md-1" *ngFor="let atividade of atividadeList">
+                <div class="center">{{atividade.abreviacao}}({{atividade.notaMaxima}})</div>
+              </div>
+
+              <div class="col-md-1" >
+                <div class="center">Media</div>
+              </div>
+            </div>
+
+            <div
+              class="row aluno-chamada"
+              *ngFor="let aluno of alunoList; index as index"
+              [class.mouse-hover]="index % 2 === 0"
+              #teste
+            >
+              <div class="col-md-3">
+                <label class="aluno-chamada-label">{{ aluno.nome }}</label>
+              </div>
+
+              <div class="col-md-1" *ngFor="let atividade of atividadeList">
+                <div class="">
+                  <input
+                    class="form-control"
+                    [attr.data-usuario]="aluno.usuario"
+                    [attr.data-atividade]="atividade.documentId"
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-1">
+                <div class="">
+                  <input
+                    class="form-control center"
+                    [attr.data-usuario]="aluno.usuario"
+                    [attr.data-atividade]="'media'"
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-3 d-flex flex-row-reverse">
+              <div class="col-md-3">
+                <button
+                  class="btn btn-info btn-fill col-md-12"
+                  (click)="registrarNotas()"
+                >
+                  Salvar
+                </button>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-danger btn-fill col-md-12">
+                  Cancelar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

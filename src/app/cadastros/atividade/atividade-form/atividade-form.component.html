@@ -45,13 +45,23 @@
                           </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                           <div class="form-group">
                             <label>Nome da Atividade</label>
                             <input
                               class="form-control"
                               formControlName="nome"
                               placeholder="De um nome para essa atividade"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="col-md-1">
+                          <div class="form-group">
+                            <label>Sigla</label>
+                            <input
+                              class="form-control"
+                              formControlName="abreviacao"
                             />
                           </div>
                         </div>
@@ -80,9 +90,21 @@
                           </div>
                         </div>
 
+
                         <div class="col-md-2">
                           <div class="form-group">
-                            <label>Nota Máxima</label>
+                            <label>Ignorar Nota Max</label>
+                            <mat-checkbox
+                              class="form-control"
+                              formControlName="desconsiderarNotaMaxima"
+                              >Ignorar Nota Max?</mat-checkbox
+                            >
+                          </div>
+                        </div>
+
+                        <div class="col-md-1">
+                          <div class="form-group">
+                            <label>Nota Máx</label>
                             <input
                               class="form-control"
                               formControlName="notaMaxima"
@@ -92,7 +114,16 @@
                       </div>
 
                       <div class="row">
-                        <div class="col-md-4">
+
+                          <div class="col-md-1">
+                            <div class="form-group">
+                              <label>Ordem</label>
+                              <input class="form-control" formControlName="ordemApresentacao" />
+                            </div>
+                          </div>
+
+
+                        <div class="col-md-3">
                           <div
                             class="form-group"
                             *ngIf="todasTurmas$ | async as turmas"

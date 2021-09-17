@@ -157,7 +157,9 @@ export class ChamadaCalendarioComponent implements OnInit {
       },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {});
+    dialogRef.afterClosed().subscribe((result) => {
+      if(result){this.carregarEventos()}
+    });
   }
 
   carregarEventos() {

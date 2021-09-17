@@ -37,7 +37,6 @@ export class RequestInterceptor implements HttpInterceptor {
     if (this.tokenService.hasToken()) {
       const token = this.tokenService.getToken();
       req = req.clone({
-        setParams: { observe: "response" },
         setHeaders: {
           Authorization: "Bearer " + token,
         },
@@ -46,7 +45,9 @@ export class RequestInterceptor implements HttpInterceptor {
 
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
+        /* TODO remover essagambiarra */
+        //Status = 0 Gambiarra por causa do CORS local
+        if (error.status === 401 || error.status == 0) {
           this.usuarioService.logout();
           this.router.navigate(["sigin-in"]);
         }

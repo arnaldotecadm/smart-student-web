@@ -7,6 +7,7 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { CalendarioModule } from "app/shared/calendario/calendario.module";
 import { TabelasModule } from "app/shared/tabelas/tabelas.module";
 import { ChamadaCalendarioModule } from "../chamada/chamada-calendario/chamada-calendario.module";
+import { NotaTurmaFormModule } from "../notas-turma/nota-turma-form/nota-turma-form.module";
 import { TurmaFormComponent } from "./turma-form.component";
 
 @NgModule({
@@ -20,6 +21,7 @@ import { TurmaFormComponent } from "./turma-form.component";
     CalendarioModule,
     MatSlideToggleModule,
     ChamadaCalendarioModule,
+    NotaTurmaFormModule
   ],
   exports: [TurmaFormComponent],
 })

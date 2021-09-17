@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotaFormComponent } from './nota-form.component';
+import { NotaTurmaFormComponent } from './nota-turma-form.component';
 
-describe('NotaFormComponent', () => {
-  let component: NotaFormComponent;
-  let fixture: ComponentFixture<NotaFormComponent>;
+describe('NotaTurmaFormComponent', () => {
+  let component: NotaTurmaFormComponent;
+  let fixture: ComponentFixture<NotaTurmaFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotaFormComponent ]
+      declarations: [ NotaTurmaFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NotaFormComponent);
+    fixture = TestBed.createComponent(NotaTurmaFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
