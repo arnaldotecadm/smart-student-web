@@ -1,20 +1,13 @@
-import { NgContentAst } from "@angular/compiler";
 import {
-  AfterContentInit,
-  AfterViewChecked,
-  AfterViewInit,
   Component,
   ElementRef,
   OnInit,
   QueryList,
-  ViewChildren,
+  ViewChildren
 } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { AlunoService } from "app/cadastros/aluno/aluno.service";
 import { AtividadeService } from "app/cadastros/atividade/atividade.service";
-import { ConfirmationMessageAfterOperation } from "app/decorators/confirmimation-message-after-operation.decorators";
-import { time } from "console";
-import { $$iterator } from "rxjs/internal/symbol/iterator";
 import { TurmaService } from "../../turma.service";
 
 @Component({
@@ -23,7 +16,7 @@ import { TurmaService } from "../../turma.service";
   styleUrls: ["./nota-turma-form.component.css"],
 })
 export class NotaTurmaFormComponent implements OnInit {
-  @ViewChildren("teste") divs!: QueryList<ElementRef>;
+  @ViewChildren("divlist") divs!: QueryList<ElementRef>;
 
   identifier;
   alunoList;

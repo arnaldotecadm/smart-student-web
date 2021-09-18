@@ -11,7 +11,9 @@
               </div>
 
               <div class="col-md-1" *ngFor="let atividade of atividadeList">
-                <div class="center">{{atividade.abreviacao}}({{atividade.notaMaxima}})</div>
+                <div class="center">
+                  <a [routerLink]="'/atividades/atividade/' + atividade.documentId">{{atividade.abreviacao}}({{atividade.notaMaxima}})</a>
+                </div>
               </div>
 
               <div class="col-md-1" >
@@ -23,10 +25,12 @@
               class="row aluno-chamada"
               *ngFor="let aluno of alunoList; index as index"
               [class.mouse-hover]="index % 2 === 0"
-              #teste
+              #divlist
             >
               <div class="col-md-3">
-                <label class="aluno-chamada-label">{{ aluno.nome }}</label>
+                <label class="aluno-chamada-label">
+                  <a [routerLink]="'/alunos/aluno/' + aluno.documentId">{{ aluno.nome }}</a>
+                </label>
               </div>
 
               <div class="col-md-1" *ngFor="let atividade of atividadeList">
