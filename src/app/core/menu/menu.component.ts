@@ -15,7 +15,6 @@ export class MenuComponent implements OnInit {
 
   MENU_ITEMS = [
     { routerLink: "home", icon: "home", label: "Home" },
-    { routerLink: "dashboard", icon: "dashboard", label: "Dashboard" },
     { routerLink: "alunos", icon: "people", label: "Alunos" },
     { routerLink: "professores", icon: "people", label: "Professores" },
     { routerLink: "turmas", icon: "people", label: "Turmas" },
@@ -38,13 +37,6 @@ export class MenuComponent implements OnInit {
     },
 
     { routerLink: "usuarios", icon: "people", label: "Usuários" },
-    { routerLink: "configuracoes", icon: "settings", label: "Configurações" },
-    {
-      routerLink: "notificacoes",
-      icon: "notification_important",
-      label: "Notificações",
-      showBadge: true,
-    },
   ];
 
   constructor(private userService: UserService, private location: Location) {}
